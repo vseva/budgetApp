@@ -72,9 +72,9 @@
 		7AF5DC4C248ADA1B000DE624 /* denLapBudgetApp */ = {
 			isa = PBXGroup;
 			children = (
+				7AF5DC72248B3F5D000DE624 /* AppState.swift */,
 				7AF5DC76248B5843000DE624 /* AppConstants.swift */,
 				7AF5DC4D248ADA1B000DE624 /* AppDelegate.swift */,
-				7AF5DC72248B3F5D000DE624 /* AppState.swift */,
 				7AF5DC53248ADA1F000DE624 /* Assets.xcassets */,
 				7AF5DC67248ADBC0000DE624 /* Collections */,
 				7AF5DC51248ADA1B000DE624 /* ContentView.swift */,

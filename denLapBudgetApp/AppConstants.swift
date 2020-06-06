@@ -16,6 +16,10 @@ struct AppConstants {
         expenseEntryType: "Expense",
         incomeEntryType: "Income",
     ]
+    static let budgetSectionTitles: [String: String] = [
+        expenseEntryType: "Expenses",
+        incomeEntryType: "Income",
+    ]
     static let budgetEntryTypesList: [String] = [
         expenseEntryType,
         incomeEntryType,

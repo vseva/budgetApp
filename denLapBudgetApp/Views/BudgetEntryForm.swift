@@ -26,36 +26,33 @@ struct BudgetEntryForm: View {
     var body: some View {
         NavigationView {
             Form {
-                Section {
-                    Picker("Type", selection: $newExpense.type) {
-                        ForEach(AppConstants.budgetEntryTypesList, id: \.self) { item in
-                            Text(AppConstants.budgetEntryTypes[item]!)
-                        }
-                    }.pickerStyle(SegmentedPickerStyle())
+                Picker("Type", selection: $newExpense.type) {
+                    ForEach(AppConstants.budgetEntryTypesList, id: \.self) { item in
+                        Text(AppConstants.budgetEntryTypes[item]!)
+                    }
+                }
+                .pickerStyle(SegmentedPickerStyle())
+                
+                Picker("Owner", selection: $newExpense.owner) {
+                    ForEach(AppConstants.budgetEntryOwnersList, id: \.self) { item in
+                        Text(AppConstants.budgetEntryOwnerTypes[item]!)
+                    }
                 }
                 
-                Section(header: Text("Owner")) {
-                    Picker("Type", selection: $newExpense.owner) {
-                        ForEach(AppConstants.budgetEntryOwnersList, id: \.self) { item in
-                            Text(AppConstants.budgetEntryOwnerTypes[item]!)
-                        }
-                    }.pickerStyle(SegmentedPickerStyle())
-                    TextField("Name", text: $newExpense.name)
-                    TextField("Amount, ₽", text: $newExpense.amount)
-                        .keyboardType(.numberPad)
-                }
+                TextField("Name", text: $newExpense.name)
                 
-                Section {
-                    Button(action: {
-                        self.expenses.add(item: self.newExpense)
-                        self.appState.selectedTab = 0
-                    }) {
-                        Text("Save")
-                    }.disabled(submitDisabled)
-                }
+                TextField("Amount, ₽", text: $newExpense.amount)
+                    .keyboardType(.numberPad)
+                
+                Button(action: {
+                    self.expenses.add(item: self.newExpense)
+                    self.appState.selectedTab = 0
+                }) {
+                    Text("Save")
+                }.disabled(submitDisabled)
                 
             }
-            .navigationBarTitle("Add new")
+            .navigationBarTitle("Add")
         }
         .onDisappear {
             self.newExpense = ExpenseItem(

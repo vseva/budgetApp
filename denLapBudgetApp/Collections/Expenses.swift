@@ -20,13 +20,13 @@ class Expenses: ObservableObject {
 //        }
 //    }
 
+    func getSectionItems(type: String) -> [ExpenseItem] {
+        return self.items.filter {
+            $0.type == type
+        }
+    }
+    
     func add(item: ExpenseItem) {
         items.append(item)
-    }
-
-    func remove(item: ExpenseItem) {
-        if let index = items.firstIndex(of: item) {
-            items.remove(at: index)
-        }
     }
 }

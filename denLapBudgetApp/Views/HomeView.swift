@@ -13,10 +13,10 @@ struct HomeView: View {
 
     var body: some View {
         TabView(selection: $appState.selectedTab) {
-            BudgetEntriesListView(type: "bsba")
+            BudgetEntriesListView(type: AppConstants.expenseEntryType)
                 .tabItem {
-                    Image(systemName: "list.dash")
-                    Text("Expenses")
+                    Image(systemName: "tray.and.arrow.up")
+                    Text(AppConstants.budgetSectionTitles[AppConstants.expenseEntryType]!)
                 }
                 .tag(0)
             BudgetEntryForm()
@@ -25,6 +25,13 @@ struct HomeView: View {
                     Text("Add")
                 }
                 .tag(1)
+
+            BudgetEntriesListView(type: AppConstants.incomeEntryType)
+                .tabItem {
+                    Image(systemName: "tray.and.arrow.down")
+                    Text(AppConstants.budgetSectionTitles[AppConstants.incomeEntryType]!)
+                }
+                .tag(2)
         }
     }
 }
