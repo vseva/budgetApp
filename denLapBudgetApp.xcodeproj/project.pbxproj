@@ -16,8 +16,11 @@
 		7AF5DC63248ADA5E000DE624 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5DC62248ADA5E000DE624 /* HomeView.swift */; };
 		7AF5DC66248ADAE2000DE624 /* ExpenseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5DC65248ADAE2000DE624 /* ExpenseItem.swift */; };
 		7AF5DC69248ADBD1000DE624 /* Expenses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5DC68248ADBD1000DE624 /* Expenses.swift */; };
-		7AF5DC6B248ADC1B000DE624 /* ExpensesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5DC6A248ADC1B000DE624 /* ExpensesListView.swift */; };
-		7AF5DC6D248AE134000DE624 /* ExpenseForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5DC6C248AE134000DE624 /* ExpenseForm.swift */; };
+		7AF5DC6B248ADC1B000DE624 /* BudgetEntriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5DC6A248ADC1B000DE624 /* BudgetEntriesListView.swift */; };
+		7AF5DC6D248AE134000DE624 /* BudgetEntryForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5DC6C248AE134000DE624 /* BudgetEntryForm.swift */; };
+		7AF5DC73248B3F5D000DE624 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5DC72248B3F5D000DE624 /* AppState.swift */; };
+		7AF5DC75248B4B4F000DE624 /* BudgetEntryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5DC74248B4B4F000DE624 /* BudgetEntryItemView.swift */; };
+		7AF5DC77248B5843000DE624 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5DC76248B5843000DE624 /* AppConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,8 +35,11 @@
 		7AF5DC62248ADA5E000DE624 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		7AF5DC65248ADAE2000DE624 /* ExpenseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseItem.swift; sourceTree = "<group>"; };
 		7AF5DC68248ADBD1000DE624 /* Expenses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expenses.swift; sourceTree = "<group>"; };
-		7AF5DC6A248ADC1B000DE624 /* ExpensesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesListView.swift; sourceTree = "<group>"; };
-		7AF5DC6C248AE134000DE624 /* ExpenseForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseForm.swift; sourceTree = "<group>"; };
+		7AF5DC6A248ADC1B000DE624 /* BudgetEntriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetEntriesListView.swift; sourceTree = "<group>"; };
+		7AF5DC6C248AE134000DE624 /* BudgetEntryForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetEntryForm.swift; sourceTree = "<group>"; };
+		7AF5DC72248B3F5D000DE624 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		7AF5DC74248B4B4F000DE624 /* BudgetEntryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetEntryItemView.swift; sourceTree = "<group>"; };
+		7AF5DC76248B5843000DE624 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +72,9 @@
 		7AF5DC4C248ADA1B000DE624 /* denLapBudgetApp */ = {
 			isa = PBXGroup;
 			children = (
+				7AF5DC76248B5843000DE624 /* AppConstants.swift */,
 				7AF5DC4D248ADA1B000DE624 /* AppDelegate.swift */,
+				7AF5DC72248B3F5D000DE624 /* AppState.swift */,
 				7AF5DC53248ADA1F000DE624 /* Assets.xcassets */,
 				7AF5DC67248ADBC0000DE624 /* Collections */,
 				7AF5DC51248ADA1B000DE624 /* ContentView.swift */,
@@ -91,9 +99,10 @@
 		7AF5DC61248ADA2D000DE624 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7AF5DC6A248ADC1B000DE624 /* BudgetEntriesListView.swift */,
+				7AF5DC6C248AE134000DE624 /* BudgetEntryForm.swift */,
+				7AF5DC74248B4B4F000DE624 /* BudgetEntryItemView.swift */,
 				7AF5DC62248ADA5E000DE624 /* HomeView.swift */,
-				7AF5DC6A248ADC1B000DE624 /* ExpensesListView.swift */,
-				7AF5DC6C248AE134000DE624 /* ExpenseForm.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -185,12 +194,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7AF5DC6D248AE134000DE624 /* ExpenseForm.swift in Sources */,
+				7AF5DC6D248AE134000DE624 /* BudgetEntryForm.swift in Sources */,
 				7AF5DC69248ADBD1000DE624 /* Expenses.swift in Sources */,
-				7AF5DC6B248ADC1B000DE624 /* ExpensesListView.swift in Sources */,
+				7AF5DC6B248ADC1B000DE624 /* BudgetEntriesListView.swift in Sources */,
+				7AF5DC77248B5843000DE624 /* AppConstants.swift in Sources */,
+				7AF5DC73248B3F5D000DE624 /* AppState.swift in Sources */,
 				7AF5DC4E248ADA1B000DE624 /* AppDelegate.swift in Sources */,
 				7AF5DC63248ADA5E000DE624 /* HomeView.swift in Sources */,
 				7AF5DC50248ADA1B000DE624 /* SceneDelegate.swift in Sources */,
+				7AF5DC75248B4B4F000DE624 /* BudgetEntryItemView.swift in Sources */,
 				7AF5DC52248ADA1B000DE624 /* ContentView.swift in Sources */,
 				7AF5DC66248ADAE2000DE624 /* ExpenseItem.swift in Sources */,
 			);

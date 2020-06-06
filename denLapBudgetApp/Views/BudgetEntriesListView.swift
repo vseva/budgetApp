@@ -8,8 +8,10 @@
 
 import SwiftUI
 
-struct ExpensesListView: View {
+struct BudgetEntriesListView: View {
     @EnvironmentObject var expenses: Expenses
+    
+    var type: String
     
     func deleteItems(at offsets: IndexSet) {
         expenses.items.remove(atOffsets: offsets)
@@ -19,20 +21,20 @@ struct ExpensesListView: View {
         NavigationView {
             List {
                 ForEach (expenses.items, id: \.self) { item in
-                    Text(item.name)
+                    BudgetEntryItemView(item: item)
                 }.onDelete(perform: deleteItems)
             }
-            .navigationBarTitle("Expenses")
+            .navigationBarTitle("test")
             
             Spacer()
         }
     }
 }
 
-struct ExpensesListView_Previews: PreviewProvider {
+struct BudgetEntriesListView_Previews: PreviewProvider {
     static let expenses = Expenses()
 
     static var previews: some View {
-        ExpensesListView().environmentObject(expenses)
+        BudgetEntriesListView(type: "BOoo").environmentObject(expenses)
     }
 }

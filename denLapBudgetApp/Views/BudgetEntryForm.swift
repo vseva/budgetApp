@@ -68,7 +68,7 @@ struct BudgetEntryForm: View {
     }
 }
 
-struct ExpenseForm_Previews: PreviewProvider {
+struct BudgetEntryForm_Previews: PreviewProvider {
     static let expenses = Expenses()
     static let appState = AppState()
 

@@ -9,26 +9,33 @@
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject var appState: AppState
+
     var body: some View {
-        TabView {
-            ExpensesListView()
+        TabView(selection: $appState.selectedTab) {
+            BudgetEntriesListView(type: "bsba")
                 .tabItem {
                     Image(systemName: "list.dash")
                     Text("Expenses")
                 }
-            ExpenseForm()
+                .tag(0)
+            BudgetEntryForm()
                 .tabItem {
                     Image(systemName: "plus")
                     Text("Add")
                 }
+                .tag(1)
         }
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static let expenses = Expenses()
+    static let appState = AppState()
 
     static var previews: some View {
-        HomeView().environmentObject(expenses)
+        HomeView()
+            .environmentObject(expenses)
+            .environmentObject(appState)
     }
 }
