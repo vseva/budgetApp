@@ -37,12 +37,9 @@ struct HomeView: View {
 }
 
 struct HomeView_Previews: PreviewProvider {
-    static let expenses = Expenses()
-    static let appState = AppState()
-
     static var previews: some View {
         HomeView()
-            .environmentObject(expenses)
-            .environmentObject(appState)
+            .environmentObject(BudgetEntries())
+            .environmentObject(AppState())
     }
 }

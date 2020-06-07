@@ -1,5 +1,5 @@
 //
-//  ExpenseItem.swift
+//  BudgetEntryItemView.swift
 //  denLapBudgetApp
 //
 //  Created by Seva Denisov on 06.06.2020.
@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct BudgetEntryItemView: View {
-    var item: ExpenseItem
+    var item: BudgetEntryItem
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -25,6 +25,6 @@ struct BudgetEntryItemView: View {
 
 struct BudgetEntryItemView_Previews: PreviewProvider {
     static var previews: some View {
-        BudgetEntryItemView(item: ExpenseItem.example)
+        BudgetEntryItemView(item: BudgetEntryItem.example)
     }
 }

@@ -1,5 +1,5 @@
 //
-//  ExpensesList.swift
+//  BudgetEntriesListView.swift
 //  denLapBudgetApp
 //
 //  Created by Seva Denisov on 05.06.2020.
@@ -9,7 +9,9 @@
 import SwiftUI
 
 struct BudgetEntriesListView: View {
-    @EnvironmentObject var expenses: Expenses
+    @EnvironmentObject var entries: BudgetEntries
+    @State var alertVisible = false
+    @State var responseText = ""
     
     var type: String
     
@@ -18,13 +20,18 @@ struct BudgetEntriesListView: View {
     }
 
     func deleteItems(at offsets: IndexSet) {
-        expenses.items.remove(atOffsets: offsets)
+        entries.items.remove(atOffsets: offsets)
+    }
+    
+    func showAlert(_ items: [BudgetEntryItem]) {
+        self.entries.set(fetchedItems: items)
+        self.alertVisible = true
     }
 
     var body: some View {
         NavigationView {
             List {
-                ForEach(expenses.getSectionItems(type: self.type), id: \.self) { item in
+                ForEach(entries.getSectionItems(type: self.type), id: \.self) { item in
                     BudgetEntryItemView(item: item)
                 }.onDelete(perform: deleteItems)
             }
@@ -36,10 +43,8 @@ struct BudgetEntriesListView: View {
 }
 
 struct BudgetEntriesListView_Previews: PreviewProvider {
-    static let expenses = Expenses()
-
     static var previews: some View {
         BudgetEntriesListView(type: AppConstants.expenseEntryType)
-            .environmentObject(expenses)
+            .environmentObject(BudgetEntries())
     }
 }

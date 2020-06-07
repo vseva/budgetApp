@@ -1,5 +1,5 @@
 //
-//  ExpenseForm.swift
+//  BudgetEntryForm.swift
 //  denLapBudgetApp
 //
 //  Created by Seva Denisov on 05.06.2020.
@@ -9,43 +9,44 @@
 import SwiftUI
 
 struct BudgetEntryForm: View {
-    @EnvironmentObject var expenses: Expenses
+    @EnvironmentObject var budgetEntries: BudgetEntries
     @EnvironmentObject var appState: AppState
     
-    @State private var newExpense = ExpenseItem(
-        name: "",
+    @State private var newEntry = BudgetEntryItem(
+        id: "",
         amount: "",
-        type: AppConstants.expenseEntryType,
-        owner: AppConstants.natashaEntryOwnerType
+        name: "",
+        owner: AppConstants.natashaEntryOwnerType,
+        type: AppConstants.expenseEntryType
     )
     
     var submitDisabled: Bool {
-        return newExpense.name == "" || newExpense.amount == ""
+        return newEntry.name == "" || newEntry.amount == ""
     }
     
     var body: some View {
         NavigationView {
             Form {
-                Picker("Type", selection: $newExpense.type) {
+                Picker("Type", selection: $newEntry.type) {
                     ForEach(AppConstants.budgetEntryTypesList, id: \.self) { item in
                         Text(AppConstants.budgetEntryTypes[item]!)
                     }
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 
-                Picker("Owner", selection: $newExpense.owner) {
+                Picker("Owner", selection: $newEntry.owner) {
                     ForEach(AppConstants.budgetEntryOwnersList, id: \.self) { item in
                         Text(AppConstants.budgetEntryOwnerTypes[item]!)
                     }
                 }
                 
-                TextField("Name", text: $newExpense.name)
+                TextField("Name", text: $newEntry.name)
                 
-                TextField("Amount, ₽", text: $newExpense.amount)
+                TextField("Amount, ₽", text: $newEntry.amount)
                     .keyboardType(.numberPad)
                 
                 Button(action: {
-                    self.expenses.add(item: self.newExpense)
+                    self.budgetEntries.add(item: self.newEntry)
                     self.appState.selectedTab = 0
                 }) {
                     Text("Save")
@@ -55,23 +56,21 @@ struct BudgetEntryForm: View {
             .navigationBarTitle("Add")
         }
         .onDisappear {
-            self.newExpense = ExpenseItem(
-                name: "",
+            self.newEntry = BudgetEntryItem(
+                id: "",
                 amount: "",
-                type: AppConstants.expenseEntryType,
-                owner: AppConstants.natashaEntryOwnerType
+                name: "",
+                owner: AppConstants.natashaEntryOwnerType,
+                type: AppConstants.expenseEntryType
             )
         }
     }
 }
 
 struct BudgetEntryForm_Previews: PreviewProvider {
-    static let expenses = Expenses()
-    static let appState = AppState()
-
     static var previews: some View {
         BudgetEntryForm()
-            .environmentObject(expenses)
-            .environmentObject(appState)
+            .environmentObject(BudgetEntries())
+            .environmentObject(AppState())
     }
 }

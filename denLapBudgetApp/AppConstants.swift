@@ -35,4 +35,6 @@ struct AppConstants {
         natashaEntryOwnerType,
         sevaEntryOwnerType,
     ]
+    
+    static let apiEntries = "https://den-lap-budget-api.now.sh/api/entries"
 }
