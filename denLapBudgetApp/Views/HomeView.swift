@@ -10,28 +10,35 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var appState: AppState
+    @EnvironmentObject var budgetEntries: BudgetEntries
 
     var body: some View {
-        TabView(selection: $appState.selectedTab) {
-            BudgetEntriesListView(type: AppConstants.expenseEntryType)
-                .tabItem {
-                    Image(systemName: "tray.and.arrow.up")
-                    Text(AppConstants.budgetSectionTitles[AppConstants.expenseEntryType]!)
-                }
-                .tag(0)
-            BudgetEntryForm()
-                .tabItem {
-                    Image(systemName: "plus")
-                    Text("Add")
-                }
-                .tag(1)
+        ZStack {
+            TabView(selection: $appState.selectedTab) {
+                BudgetEntriesListView(type: AppConstants.expenseEntryType)
+                    .tabItem {
+                        Image(systemName: "tray.and.arrow.up")
+                        Text(AppConstants.budgetSectionTitles[AppConstants.expenseEntryType]!)
+                    }
+                    .tag(0)
+                BudgetEntryForm()
+                    .tabItem {
+                        Image(systemName: "plus")
+                        Text("Add")
+                    }
+                    .tag(1)
 
-            BudgetEntriesListView(type: AppConstants.incomeEntryType)
-                .tabItem {
-                    Image(systemName: "tray.and.arrow.down")
-                    Text(AppConstants.budgetSectionTitles[AppConstants.incomeEntryType]!)
-                }
-                .tag(2)
+                BudgetEntriesListView(type: AppConstants.incomeEntryType)
+                    .tabItem {
+                        Image(systemName: "tray.and.arrow.down")
+                        Text(AppConstants.budgetSectionTitles[AppConstants.incomeEntryType]!)
+                    }
+                    .tag(2)
+            }
+
+            if !budgetEntries.itemsAreLoaded {
+                LoaderContainerView()
+            }
         }
     }
 }

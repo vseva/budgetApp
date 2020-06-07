@@ -29,15 +29,17 @@ struct BudgetEntriesListView: View {
     }
 
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(entries.getSectionItems(type: self.type), id: \.self) { item in
-                    BudgetEntryItemView(item: item)
-                }.onDelete(perform: deleteItems)
+        ZStack {
+            NavigationView {
+                List {
+                    ForEach(entries.getSectionItems(type: self.type), id: \.self) { item in
+                        BudgetEntryItemView(item: item)
+                    }.onDelete(perform: deleteItems)
+                }
+                .navigationBarTitle(listTitle)
+                
+                Spacer()
             }
-            .navigationBarTitle(listTitle)
-            
-            Spacer()
         }
     }
 }

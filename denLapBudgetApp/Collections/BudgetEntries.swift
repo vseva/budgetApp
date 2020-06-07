@@ -10,10 +10,12 @@ import SwiftUI
 
 
 func getEntries(completion: @escaping ([BudgetEntryItem]) -> Void) {
-    let session = URLSession.shared
     let url = URL(string: AppConstants.apiEntries)!
+    var request = URLRequest(url: url)
 
-    let task = session.dataTask(with: url) { data, response, error in
+    request.setValue("auth=zitugtK15KhCK2X0I7d436L3dsT6AIKI2we0UsIw", forHTTPHeaderField: "Cookie")
+
+    let task = URLSession.shared.dataTask(with: request) { data, response, error in
         if error != nil {
             print("Response error", error!)
             return
@@ -57,10 +59,12 @@ func getEntries(completion: @escaping ([BudgetEntryItem]) -> Void) {
 
 class BudgetEntries: ObservableObject {
     @Published var items = [BudgetEntryItem]()
+    @Published var itemsAreLoaded = false
     
     func getEntriesCompletion(_ fetchedItems: [BudgetEntryItem]) {
         DispatchQueue.main.async {
             self.items.append(contentsOf: fetchedItems)
+            self.itemsAreLoaded = true
         }
     }
     

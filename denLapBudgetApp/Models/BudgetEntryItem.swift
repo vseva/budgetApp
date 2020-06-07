@@ -21,7 +21,6 @@ struct BudgetEntryItem: Codable, Equatable, Hashable {
     var name: String
     var owner: String
     var type: String
-    
 
     #if DEBUG
         static let example = BudgetEntryItem(
