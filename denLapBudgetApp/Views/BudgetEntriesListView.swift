@@ -22,11 +22,6 @@ struct BudgetEntriesListView: View {
     func deleteItems(at offsets: IndexSet) {
         entries.items.remove(atOffsets: offsets)
     }
-    
-    func showAlert(_ items: [BudgetEntryItem]) {
-        self.entries.set(fetchedItems: items)
-        self.alertVisible = true
-    }
 
     var body: some View {
         ZStack {
