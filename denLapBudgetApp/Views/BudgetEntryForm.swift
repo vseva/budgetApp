@@ -19,6 +19,7 @@ struct BudgetEntryForm: View {
         owner: AppConstants.natashaEntryOwnerType,
         type: AppConstants.expenseEntryType
     )
+    @State private var date = Date()
     
     var submitDisabled: Bool {
         return newEntry.name == "" || newEntry.amount == ""
@@ -39,6 +40,13 @@ struct BudgetEntryForm: View {
                         Text(AppConstants.budgetEntryOwnerTypes[item]!)
                     }
                 }
+                
+                DatePicker(
+                    "Date",
+                   selection: $date,
+                   in: ...date,
+                   displayedComponents: .date
+                )
                 
                 TextField("Name", text: $newEntry.name)
                 
