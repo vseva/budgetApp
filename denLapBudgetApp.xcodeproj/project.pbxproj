@@ -32,7 +32,7 @@
 		7A2C0DC0248D3936004B3B00 /* LoaderContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderContainerView.swift; sourceTree = "<group>"; };
 		7A2C0DC3248D5A23004B3B00 /* AppUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtils.swift; sourceTree = "<group>"; };
 		7A2C0DC6248E238A004B3B00 /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
-		7AF5DC4A248ADA1B000DE624 /* denLapBudgetApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = denLapBudgetApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7AF5DC4A248ADA1B000DE624 /* Family Budget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Family Budget.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AF5DC4D248ADA1B000DE624 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7AF5DC4F248ADA1B000DE624 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		7AF5DC51248ADA1B000DE624 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -80,7 +80,7 @@
 		7AF5DC4B248ADA1B000DE624 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7AF5DC4A248ADA1B000DE624 /* denLapBudgetApp.app */,
+				7AF5DC4A248ADA1B000DE624 /* Family Budget.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -160,7 +160,7 @@
 			);
 			name = denLapBudgetApp;
 			productName = denLapBudgetApp;
-			productReference = 7AF5DC4A248ADA1B000DE624 /* denLapBudgetApp.app */;
+			productReference = 7AF5DC4A248ADA1B000DE624 /* Family Budget.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -374,9 +374,9 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.DenLap.denLapBudgetApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Family Budget";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -394,9 +394,9 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.DenLap.denLapBudgetApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Family Budget";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
