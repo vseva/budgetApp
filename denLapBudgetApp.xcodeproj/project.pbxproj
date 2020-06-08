@@ -81,6 +81,7 @@
 				7AF5DC76248B5843000DE624 /* AppConstants.swift */,
 				7AF5DC4D248ADA1B000DE624 /* AppDelegate.swift */,
 				7AF5DC72248B3F5D000DE624 /* AppState.swift */,
+				7A2C0DC3248D5A23004B3B00 /* AppUtils.swift */,
 				7AF5DC53248ADA1F000DE624 /* Assets.xcassets */,
 				7AF5DC67248ADBC0000DE624 /* Collections */,
 				7AF5DC51248ADA1B000DE624 /* ContentView.swift */,
@@ -90,7 +91,6 @@
 				7AF5DC55248ADA1F000DE624 /* Preview Content */,
 				7AF5DC4F248ADA1B000DE624 /* SceneDelegate.swift */,
 				7AF5DC61248ADA2D000DE624 /* Views */,
-				7A2C0DC3248D5A23004B3B00 /* AppUtils.swift */,
 			);
 			path = denLapBudgetApp;
 			sourceTree = "<group>";

@@ -55,6 +55,12 @@ func getEntries(completion: @escaping ([BudgetEntryItem]) -> Void) {
 func addEntry(budgetEntry: BudgetEntryItem, completion: @escaping (BudgetEntryItem) -> Void) {
     var request = prepareRequest(location: AppConstants.apiAddEntry)
     let jsonEncoder = JSONEncoder()
+//    let formatter = DateFormatter()
+//
+//    formatter.dateStyle = .full
+//    formatter.timeStyle = .full
+
+    jsonEncoder.dateEncodingStrategy = .iso8601
     
     guard let jsonData = try? jsonEncoder.encode(budgetEntry) else {
         print("Can not encode json")

@@ -18,3 +18,24 @@ func prepareRequest(location: String) -> URLRequest {
     
     return request
 }
+
+func getStringFromDate(date: Date) -> String {
+    let formatter = ISO8601DateFormatter()
+
+    return formatter.string(from: date)
+}
+
+// ISO 8601 date format: "2016-08-17T04:23:00Z"
+func getDateFromString(dateString: String) -> Date {
+    let formatter = ISO8601DateFormatter()
+
+    return formatter.date(from: dateString)!
+}
+
+func getHumanDateFormat(date: Date) -> String {
+    let formatter = DateFormatter()
+    
+    formatter.dateFormat = "MMM d, yyyy"
+    
+    return formatter.string(from: date)
+}

@@ -10,5 +10,5 @@ import SwiftUI
 
 
 class AppState: ObservableObject {
-    @Published var selectedTab = 1
+    @Published var selectedTab = 0
 }

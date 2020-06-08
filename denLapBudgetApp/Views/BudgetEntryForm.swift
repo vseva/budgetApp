@@ -11,15 +11,7 @@ import SwiftUI
 struct BudgetEntryForm: View {
     @EnvironmentObject var budgetEntries: BudgetEntries
     @EnvironmentObject var appState: AppState
-    
-    @State private var newEntry = BudgetEntryItem(
-        id: "",
-        amount: "",
-        name: "",
-        owner: AppConstants.natashaEntryOwnerType,
-        type: AppConstants.expenseEntryType
-    )
-    @State private var date = Date()
+    @State private var newEntry = BudgetEntryItem.blank
     
     var submitDisabled: Bool {
         return newEntry.name == "" || newEntry.amount == ""
@@ -43,9 +35,9 @@ struct BudgetEntryForm: View {
                 
                 DatePicker(
                     "Date",
-                   selection: $date,
-                   in: ...date,
-                   displayedComponents: .date
+                    selection: $newEntry.date,
+                    in: ...Date(),
+                    displayedComponents: .date
                 )
                 
                 TextField("Name", text: $newEntry.name)
@@ -64,13 +56,7 @@ struct BudgetEntryForm: View {
             .navigationBarTitle("Add")
         }
         .onDisappear {
-            self.newEntry = BudgetEntryItem(
-                id: "",
-                amount: "",
-                name: "",
-                owner: AppConstants.natashaEntryOwnerType,
-                type: AppConstants.expenseEntryType
-            )
+            self.newEntry = BudgetEntryItem.blank
         }
     }
 }

@@ -36,9 +36,39 @@ struct AppConstants {
         sevaEntryOwnerType,
     ]
     
-    static let apiUri = "https://den-lap-budget-api.now.sh/api"
-    //static let apiUri = "http://localhost:3000/api"
+    //static let apiUri = "https://den-lap-budget-api.now.sh/api"
+    static let apiUri = "http://localhost:3000/api"
     static let apiGetEntries = "\(apiUri)/entries"
     static let apiAddEntry = "\(apiUri)/add"
     static let apiAuthCookie = "auth=zitugtK15KhCK2X0I7d436L3dsT6AIKI2we0UsIw"
+    
+    static let defaultBudgetCategory = "food"
+    static let budgetCategories: [String: String] = [
+        "alcohol": "Алкоголь",
+        "zhenyaHygiene": "Гигиена Жени",
+        "deliciaes": "Деликатесы",
+        "others": "Другое",
+        "zhenyaFood": "Еда Жени",
+        "officeFood": "Еда в офисе",
+        "food": "Еда",
+        "zhenyaHealth": "Здоровье Жени",
+        "health": "Здоровье",
+        "mortgage": "Ипотека",
+        "municipal": "Коммуналка",
+        "treasuryBox": "Копилка",
+        "beauty": "Красота",
+        "credit": "Кредит",
+        "smoking": "Курение",
+        "clothingAndShoes": "Одежда/обувь",
+        "gifts": "Подарки",
+        "travel": "Путешествия",
+        "entertainment": "Развлечения",
+        "telecom": "Связь",
+        "cheeze": "Сыр",
+        "home": "Товары для дома",
+        "transport": "Транспорт",
+        "digital": "Цифровые услуги",
+        "reading": "Чтение",
+        "electronic": "Электроника",
+    ]
 }

@@ -13,6 +13,7 @@ struct BudgetEntryItemView: View {
 
     var body: some View {
         VStack(alignment: .leading) {
+            Text(getHumanDateFormat(date: item.date))
             Text(AppConstants.budgetEntryOwnerTypes[item.owner]!)
             HStack {
                 Text(item.name).font(.headline)
