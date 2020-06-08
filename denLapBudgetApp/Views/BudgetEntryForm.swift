@@ -14,15 +14,23 @@ struct BudgetEntryForm: View {
     @State private var newEntry = BudgetEntryItem.blank
     
     var submitDisabled: Bool {
-        return newEntry.name == "" || newEntry.amount == ""
+        return newEntry.description == "" || newEntry.amount == ""
+    }
+    
+    func onEntryTypeChange(_ id: String) {
+        if id == AppConstants.incomeEntryType {
+            self.newEntry.category = AppConstants.defaultBudgetIncomeCategory
+        } else {
+            self.newEntry.category = AppConstants.defaultBudgetExpenseCategory
+        }
     }
     
     var body: some View {
         NavigationView {
             Form {
-                Picker("Type", selection: $newEntry.type) {
+                Picker("Type", selection: $newEntry.type.onChange(self.onEntryTypeChange)) {
                     ForEach(AppConstants.budgetEntryTypesList, id: \.self) { item in
-                        Text(AppConstants.budgetEntryTypes[item]!)
+                        Text(AppConstants.budgetEntryTypes[item]!).tag(item)
                     }
                 }
                 .pickerStyle(SegmentedPickerStyle())
@@ -39,19 +47,32 @@ struct BudgetEntryForm: View {
                     in: ...Date(),
                     displayedComponents: .date
                 )
+
+                Picker("Category", selection: $newEntry.category) {
+                    if newEntry.type == AppConstants.expenseEntryType {
+                        ForEach(AppConstants.budgetExpensesCategoriesList, id: \.self) { item in
+                            Text(AppConstants.budgetExpensesCategoriesTypes[item]!)
+                        }
+                    } else {
+                        ForEach(AppConstants.budgetIncomeCategoriesList, id: \.self) { item in
+                            Text(AppConstants.budgetIncomeCategoriesTypes[item]!)
+                        }
+                    }
+                }
                 
-                TextField("Name", text: $newEntry.name)
+                TextField("Description", text: $newEntry.description)
                 
                 TextField("Amount, ₽", text: $newEntry.amount)
                     .keyboardType(.numberPad)
                 
-                Button(action: {
-                    self.budgetEntries.add(item: self.newEntry)
-                    self.appState.selectedTab = 0
-                }) {
-                    Text("Save")
-                }.disabled(submitDisabled)
-                
+                Section {
+                    Button(action: {
+                        self.budgetEntries.add(item: self.newEntry)
+                        self.appState.selectedTab = AppConstants.AppTabs.expenses
+                    }) {
+                        Text("Save")
+                    }.disabled(submitDisabled)
+                }
             }
             .navigationBarTitle("Add")
         }

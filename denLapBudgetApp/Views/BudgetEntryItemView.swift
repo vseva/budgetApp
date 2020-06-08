@@ -10,15 +10,24 @@ import SwiftUI
 
 struct BudgetEntryItemView: View {
     var item: BudgetEntryItem
+    var categoryTitle: String {
+        if item.type == AppConstants.expenseEntryType {
+            return AppConstants.budgetExpensesCategoriesTypes[item.category]!
+        }
+        
+        return AppConstants.budgetIncomeCategoriesTypes[item.category]!
+    }
 
     var body: some View {
         VStack(alignment: .leading) {
             Text(getHumanDateFormat(date: item.date))
-            Text(AppConstants.budgetEntryOwnerTypes[item.owner]!)
+                .font(.system(size: 12))
+            Text(categoryTitle)
+                .font(.system(size: 14))
             HStack {
-                Text(item.name).font(.headline)
+                Text(item.description).font(.headline)
                 Spacer()
-                Text("\(item.amount) ₽")
+                Text("\(item.amount) ₽").font(.headline)
             }
         }
     }

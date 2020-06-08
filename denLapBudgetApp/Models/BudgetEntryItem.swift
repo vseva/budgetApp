@@ -18,16 +18,18 @@ enum SerializationError: Error {
 struct BudgetEntryItem: Codable, Equatable, Hashable {
     var id: String
     var amount: String
+    var category: String
     var date: Date
-    var name: String
+    var description: String
     var owner: String
     var type: String
     
     static let blank = BudgetEntryItem(
         id: "",
         amount: "",
+        category: AppConstants.defaultBudgetExpenseCategory,
         date: Date(),
-        name: "",
+        description: "",
         owner: AppConstants.natashaEntryOwnerType,
         type: AppConstants.expenseEntryType
     )
@@ -36,8 +38,9 @@ struct BudgetEntryItem: Codable, Equatable, Hashable {
         static let example = BudgetEntryItem(
             id: "",
             amount: "23",
+            category: AppConstants.defaultBudgetExpenseCategory,
             date: getDateFromString(dateString: "2011-11-11T11:11Z"),
-            name: "Maple French Toast",
+            description: "Макароны",
             owner: AppConstants.natashaEntryOwnerType,
             type: AppConstants.expenseEntryType
         )
@@ -54,12 +57,16 @@ extension BudgetEntryItem {
             throw SerializationError.missing("amount")
         }
         
+        guard let category = json["category"] as? String else {
+            throw SerializationError.missing("category")
+        }
+        
         guard let date = json["date"] as? String else {
             throw SerializationError.missing("date")
         }
         
-        guard let name = json["name"] as? String else {
-            throw SerializationError.missing("name")
+        guard let description = json["description"] as? String else {
+            throw SerializationError.missing("description")
         }
         
         guard let owner = json["owner"] as? String else {
@@ -72,8 +79,9 @@ extension BudgetEntryItem {
 
         self.id = id
         self.amount = amount
+        self.category = category
         self.date = getDateFromString(dateString: date)
-        self.name = name
+        self.description = description
         self.owner = owner
         self.type = type
     }

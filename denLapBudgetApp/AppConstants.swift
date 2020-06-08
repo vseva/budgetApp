@@ -10,6 +10,9 @@ import Foundation
 
 
 struct AppConstants {
+    enum AppTabs {
+        case expenses, add, income
+    }
     static let expenseEntryType = "expense"
     static let incomeEntryType = "income"
     static let budgetEntryTypes: [String: String] = [
@@ -28,22 +31,50 @@ struct AppConstants {
     static let natashaEntryOwnerType = "natasha"
     static let sevaEntryOwnerType = "seva"
     static let budgetEntryOwnerTypes: [String: String] = [
-        natashaEntryOwnerType: "Natasha",
-        sevaEntryOwnerType: "Seva",
+        natashaEntryOwnerType: "Наташа",
+        sevaEntryOwnerType: "Сева",
     ]
     static let budgetEntryOwnersList: [String] = [
         natashaEntryOwnerType,
         sevaEntryOwnerType,
     ]
     
-    //static let apiUri = "https://den-lap-budget-api.now.sh/api"
-    static let apiUri = "http://localhost:3000/api"
+    //static let apiUri = "http://localhost:3000/api"
+    static let apiUri = "https://den-lap-budget-api.now.sh/api"
     static let apiGetEntries = "\(apiUri)/entries"
     static let apiAddEntry = "\(apiUri)/add"
     static let apiAuthCookie = "auth=zitugtK15KhCK2X0I7d436L3dsT6AIKI2we0UsIw"
     
-    static let defaultBudgetCategory = "food"
-    static let budgetCategories: [String: String] = [
+    static let defaultBudgetExpenseCategory = "food"
+    static let budgetExpensesCategoriesList: [String] = [
+        "food",
+        "zhenyaHealth",
+        "health",
+        "mortgage",
+        "municipal",
+        "treasuryBox",
+        "beauty",
+        "credit",
+        "smoking",
+        "clothingAndShoes",
+        "gifts",
+        "travel",
+        "entertainment",
+        "telecom",
+        "cheeze",
+        "home",
+        "transport",
+        "digital",
+        "reading",
+        "electronic",
+        "alcohol",
+        "zhenyaHygiene",
+        "deliciaes",
+        "others",
+        "zhenyaFood",
+        "officeFood",
+    ]
+    static let budgetExpensesCategoriesTypes: [String: String] = [
         "alcohol": "Алкоголь",
         "zhenyaHygiene": "Гигиена Жени",
         "deliciaes": "Деликатесы",
@@ -70,5 +101,25 @@ struct AppConstants {
         "digital": "Цифровые услуги",
         "reading": "Чтение",
         "electronic": "Электроника",
+    ]
+    
+    static let defaultBudgetIncomeCategory = "salary"
+    static let budgetIncomeCategoriesList: [String] = [
+        "avito",
+        "salary",
+        "treasuryBox",
+        "gifts",
+        "allowance",
+        "interest",
+        "freelance",
+    ]
+    static let budgetIncomeCategoriesTypes: [String: String] = [
+        "avito": "Авито",
+        "salary": "Зарплата",
+        "treasuryBox": "Копилка",
+        "gifts": "Подарки",
+        "allowance": "Пособие",
+        "interest": "Проценты",
+        "freelance": "Фриланс",
     ]
 }

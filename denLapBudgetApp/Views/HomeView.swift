@@ -15,25 +15,26 @@ struct HomeView: View {
     var body: some View {
         ZStack {
             TabView(selection: $appState.selectedTab) {
+                BudgetEntryForm()
+                .tabItem {
+                    Image(systemName: "plus")
+                    Text("Add")
+                }
+                .tag(AppConstants.AppTabs.add)
+                
                 BudgetEntriesListView(type: AppConstants.expenseEntryType)
                     .tabItem {
                         Image(systemName: "tray.and.arrow.up")
                         Text(AppConstants.budgetSectionTitles[AppConstants.expenseEntryType]!)
                     }
-                    .tag(0)
-                BudgetEntryForm()
-                    .tabItem {
-                        Image(systemName: "plus")
-                        Text("Add")
-                    }
-                    .tag(1)
+                    .tag(AppConstants.AppTabs.expenses)
 
                 BudgetEntriesListView(type: AppConstants.incomeEntryType)
                     .tabItem {
                         Image(systemName: "tray.and.arrow.down")
                         Text(AppConstants.budgetSectionTitles[AppConstants.incomeEntryType]!)
                     }
-                    .tag(2)
+                    .tag(AppConstants.AppTabs.income)
             }
 
             if !budgetEntries.itemsAreLoaded {
