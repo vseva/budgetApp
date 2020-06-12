@@ -20,7 +20,12 @@ struct BudgetEntriesListView: View {
     }
 
     func deleteItems(at offsets: IndexSet) {
-        entries.items.remove(atOffsets: offsets)
+        offsets.forEach {
+            entries.remove(
+                item: entries.items[$0],
+                atOffsets: offsets
+            )
+        }
     }
 
     var body: some View {

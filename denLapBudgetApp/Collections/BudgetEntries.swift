@@ -101,6 +101,61 @@ func addEntry(budgetEntry: BudgetEntryItem, completion: @escaping (BudgetEntryIt
     }.resume()
 }
 
+
+func removeEntry(
+    budgetEntry: BudgetEntryItem,
+    completion: @escaping () -> Void
+) {
+    var request = prepareRequest(location: AppConstants.apiRemoveEntry)
+    let jsonEncoder = JSONEncoder()
+
+    jsonEncoder.dateEncodingStrategy = .iso8601
+    
+    guard let jsonData = try? jsonEncoder.encode(budgetEntry) else {
+        print("Can not encode json")
+        return
+    }
+
+    let httpBody = jsonData
+
+    request.httpMethod = "DELETE"
+    request.httpBody = httpBody
+    
+    URLSession.shared.dataTask(with: request) { data, response, error in
+        if error != nil {
+            print("Response error", error!)
+            return
+        }
+        
+        guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+            if response != nil {
+                print("Wrong response", response!)
+            } else {
+                print("Empty response")
+            }
+            return
+        }
+        
+        guard let mime = response?.mimeType, mime == "application/json" else {
+            print("Wrong MIME type")
+            return
+        }
+        
+        do {
+            if let json = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
+                if let deletedEntryId = json["deleted"] as? String {
+                    print("deletedEntryId", deletedEntryId)
+                    completion()
+                } else {
+                    print("Entry was not deleted", json)
+                }
+            }
+        } catch let error as NSError {
+            print("JSON error: \(error.localizedDescription)")
+        }
+    }.resume()
+}
+
 class BudgetEntries: ObservableObject {
     @Published var items = [BudgetEntryItem]()
     @Published var itemsAreLoaded = false
@@ -124,6 +179,19 @@ class BudgetEntries: ObservableObject {
     
     func add(item: BudgetEntryItem) {
         addEntry(budgetEntry: item, completion: addEntryCompletion)
+    }
+ 
+    func remove(item: BudgetEntryItem, atOffsets: IndexSet) {
+        func removeEntryCompletion() {
+            DispatchQueue.main.async {
+                self.items.remove(atOffsets: atOffsets)
+            }
+        }
+
+        removeEntry(
+            budgetEntry: item,
+            completion: removeEntryCompletion
+        )
     }
     
     func getSectionItems(type: String) -> [BudgetEntryItem] {
