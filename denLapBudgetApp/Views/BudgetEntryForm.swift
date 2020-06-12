@@ -10,31 +10,32 @@ import SwiftUI
 
 struct BudgetEntryForm: View {
     @EnvironmentObject var appState: AppState
-    @State private var newEntry = BudgetEntryItem.blank
+    @State var entry: BudgetEntryItem
+    let isEditing: Bool
     
     var submitDisabled: Bool {
-        return newEntry.description == "" || newEntry.amount == ""
+        return entry.description == "" || entry.amount == ""
     }
     
     func onEntryTypeChange(_ id: String) {
         if id == AppConstants.incomeEntryType {
-            self.newEntry.category = AppConstants.defaultBudgetIncomeCategory
+            self.entry.category = AppConstants.defaultBudgetIncomeCategory
         } else {
-            self.newEntry.category = AppConstants.defaultBudgetExpenseCategory
+            self.entry.category = AppConstants.defaultBudgetExpenseCategory
         }
     }
     
     var body: some View {
-        NavigationView {
+        VStack {
             Form {
-                Picker("Type", selection: $newEntry.type.onChange(self.onEntryTypeChange)) {
+                Picker("Type", selection: $entry.type.onChange(self.onEntryTypeChange)) {
                     ForEach(AppConstants.budgetEntryTypesList, id: \.self) { item in
                         Text(AppConstants.budgetEntryTypes[item]!).tag(item)
                     }
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 
-                Picker("Owner", selection: $newEntry.owner) {
+                Picker("Owner", selection: $entry.owner) {
                     ForEach(AppConstants.budgetEntryOwnersList, id: \.self) { item in
                         Text(AppConstants.budgetEntryOwnerTypes[item]!)
                     }
@@ -42,13 +43,13 @@ struct BudgetEntryForm: View {
                 
                 DatePicker(
                     "Date",
-                    selection: $newEntry.date,
+                    selection: $entry.date,
                     in: ...Date(),
                     displayedComponents: .date
                 )
 
-                Picker("Category", selection: $newEntry.category) {
-                    if newEntry.type == AppConstants.expenseEntryType {
+                Picker("Category", selection: $entry.category) {
+                    if entry.type == AppConstants.expenseEntryType {
                         ForEach(AppConstants.budgetExpensesCategoriesList, id: \.self) { item in
                             Text(AppConstants.budgetExpensesCategoriesTypes[item]!)
                         }
@@ -59,32 +60,34 @@ struct BudgetEntryForm: View {
                     }
                 }
                 
-                TextField("Description", text: $newEntry.description)
+                TextField("Description", text: $entry.description)
                 
-                TextField("Vendor", text: $newEntry.vendor)
+                TextField("Vendor", text: $entry.vendor)
                 
-                TextField("Amount, ₽", text: $newEntry.amount)
+                TextField("Amount, ₽", text: $entry.amount)
                     .keyboardType(.numberPad)
                 
                 Section {
                     Button(action: {
-                        self.appState.add(item: self.newEntry)
+                        self.appState.add(item: self.entry)
                         self.appState.selectedTab = AppConstants.AppTabs.expenses
                     }) {
-                        Text("Save")
+                        Text(isEditing ? "Save" : "Add")
                     }.disabled(submitDisabled)
                 }
             }
-            .navigationBarTitle("Add")
+            
+            Spacer()
         }
-        .onDisappear {
-            self.newEntry = BudgetEntryItem.blank
-        }
+        .navigationBarTitle(isEditing ? "Edit" : "Add")
     }
 }
 
 struct BudgetEntryForm_Previews: PreviewProvider {
     static var previews: some View {
-        BudgetEntryForm().environmentObject(AppState())
+        BudgetEntryForm(
+            entry: BudgetEntryItem.blank,
+            isEditing: true
+        ).environmentObject(AppState())
     }
 }

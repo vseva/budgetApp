@@ -14,26 +14,35 @@ struct HomeView: View {
     var body: some View {
         ZStack {
             TabView(selection: $appState.selectedTab) {
-                BudgetEntryForm()
+                NavigationView {
+                    BudgetEntryForm(entry: BudgetEntryItem.blank, isEditing: false)
+                }
                 .tabItem {
                     Image(systemName: "plus")
                     Text("Add")
                 }
                 .tag(AppConstants.AppTabs.add)
+                .navigationViewStyle(StackNavigationViewStyle())
                 
-                BudgetEntriesListView(type: AppConstants.expenseEntryType)
-                    .tabItem {
-                        Image(systemName: "tray.and.arrow.up")
-                        Text(AppConstants.budgetSectionTitles[AppConstants.expenseEntryType]!)
-                    }
-                    .tag(AppConstants.AppTabs.expenses)
+                NavigationView {
+                    BudgetEntriesListView(type: AppConstants.expenseEntryType)
+                }
+                .tabItem {
+                    Image(systemName: "tray.and.arrow.up")
+                    Text(AppConstants.budgetSectionTitles[AppConstants.expenseEntryType]!)
+                }
+                .tag(AppConstants.AppTabs.expenses)
+                .navigationViewStyle(StackNavigationViewStyle())
 
-                BudgetEntriesListView(type: AppConstants.incomeEntryType)
-                    .tabItem {
-                        Image(systemName: "tray.and.arrow.down")
-                        Text(AppConstants.budgetSectionTitles[AppConstants.incomeEntryType]!)
-                    }
-                    .tag(AppConstants.AppTabs.income)
+                NavigationView {
+                    BudgetEntriesListView(type: AppConstants.incomeEntryType)
+                }
+                .tabItem {
+                    Image(systemName: "tray.and.arrow.down")
+                    Text(AppConstants.budgetSectionTitles[AppConstants.incomeEntryType]!)
+                }
+                .tag(AppConstants.AppTabs.income)
+                .navigationViewStyle(StackNavigationViewStyle())
             }
 
             if !appState.itemsAreLoaded {

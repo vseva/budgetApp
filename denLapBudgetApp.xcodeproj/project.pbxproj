@@ -118,8 +118,8 @@
 				7AF5DC6C248AE134000DE624 /* BudgetEntryForm.swift */,
 				7AF5DC74248B4B4F000DE624 /* BudgetEntryItemView.swift */,
 				7AF5DC62248ADA5E000DE624 /* HomeView.swift */,
-				7A2C0DBE248D3893004B3B00 /* LoaderView.swift */,
 				7A2C0DC0248D3936004B3B00 /* LoaderContainerView.swift */,
+				7A2C0DBE248D3893004B3B00 /* LoaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
