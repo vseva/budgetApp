@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct BudgetEntriesListView: View {
-    @EnvironmentObject var entries: BudgetEntries
+    @EnvironmentObject var entries: AppState
     @State var alertVisible = false
     @State var responseText = ""
     
@@ -47,6 +47,6 @@ struct BudgetEntriesListView: View {
 struct BudgetEntriesListView_Previews: PreviewProvider {
     static var previews: some View {
         BudgetEntriesListView(type: AppConstants.expenseEntryType)
-            .environmentObject(BudgetEntries())
+            .environmentObject(AppState())
     }
 }

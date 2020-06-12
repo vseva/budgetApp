@@ -1,5 +1,5 @@
 //
-//  Expenses.swift
+//  AppState.swift
 //  denLapBudgetApp
 //
 //  Created by Seva Denisov on 05.06.2020.
@@ -156,7 +156,7 @@ func removeEntry(
     }.resume()
 }
 
-class BudgetEntries: ObservableObject {
+class AppState: ObservableObject {
     @Published var items = [BudgetEntryItem]()
     @Published var itemsAreLoaded = false
     @Published var selectedTab = AppConstants.AppTabs.add

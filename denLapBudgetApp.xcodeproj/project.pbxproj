@@ -19,7 +19,7 @@
 		7AF5DC5A248ADA1F000DE624 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AF5DC58248ADA1F000DE624 /* LaunchScreen.storyboard */; };
 		7AF5DC63248ADA5E000DE624 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5DC62248ADA5E000DE624 /* HomeView.swift */; };
 		7AF5DC66248ADAE2000DE624 /* BudgetEntryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5DC65248ADAE2000DE624 /* BudgetEntryItem.swift */; };
-		7AF5DC69248ADBD1000DE624 /* BudgetEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5DC68248ADBD1000DE624 /* BudgetEntries.swift */; };
+		7AF5DC69248ADBD1000DE624 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5DC68248ADBD1000DE624 /* AppState.swift */; };
 		7AF5DC6B248ADC1B000DE624 /* BudgetEntriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5DC6A248ADC1B000DE624 /* BudgetEntriesListView.swift */; };
 		7AF5DC6D248AE134000DE624 /* BudgetEntryForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5DC6C248AE134000DE624 /* BudgetEntryForm.swift */; };
 		7AF5DC75248B4B4F000DE624 /* BudgetEntryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5DC74248B4B4F000DE624 /* BudgetEntryItemView.swift */; };
@@ -41,7 +41,7 @@
 		7AF5DC5B248ADA1F000DE624 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7AF5DC62248ADA5E000DE624 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		7AF5DC65248ADAE2000DE624 /* BudgetEntryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetEntryItem.swift; sourceTree = "<group>"; };
-		7AF5DC68248ADBD1000DE624 /* BudgetEntries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetEntries.swift; sourceTree = "<group>"; };
+		7AF5DC68248ADBD1000DE624 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		7AF5DC6A248ADC1B000DE624 /* BudgetEntriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetEntriesListView.swift; sourceTree = "<group>"; };
 		7AF5DC6C248AE134000DE624 /* BudgetEntryForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetEntryForm.swift; sourceTree = "<group>"; };
 		7AF5DC74248B4B4F000DE624 /* BudgetEntryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetEntryItemView.swift; sourceTree = "<group>"; };
@@ -88,8 +88,8 @@
 			children = (
 				7AF5DC76248B5843000DE624 /* AppConstants.swift */,
 				7AF5DC4D248ADA1B000DE624 /* AppDelegate.swift */,
+				7AF5DC68248ADBD1000DE624 /* AppState.swift */,
 				7A2C0DC3248D5A23004B3B00 /* AppUtils.swift */,
-				7AF5DC68248ADBD1000DE624 /* BudgetEntries.swift */,
 				7AF5DC53248ADA1F000DE624 /* Assets.xcassets */,
 				7AF5DC51248ADA1B000DE624 /* ContentView.swift */,
 				7A2C0DC5248E2373004B3B00 /* Extensions */,
@@ -205,7 +205,7 @@
 			files = (
 				7A2C0DC1248D3936004B3B00 /* LoaderContainerView.swift in Sources */,
 				7AF5DC6D248AE134000DE624 /* BudgetEntryForm.swift in Sources */,
-				7AF5DC69248ADBD1000DE624 /* BudgetEntries.swift in Sources */,
+				7AF5DC69248ADBD1000DE624 /* AppState.swift in Sources */,
 				7AF5DC6B248ADC1B000DE624 /* BudgetEntriesListView.swift in Sources */,
 				7A2C0DC7248E238A004B3B00 /* Binding.swift in Sources */,
 				7AF5DC77248B5843000DE624 /* AppConstants.swift in Sources */,

@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7AF5DC49248ADA1B000DE624"
-               BuildableName = "denLapBudgetApp.app"
+               BuildableName = "Family Budget.app"
                BlueprintName = "denLapBudgetApp"
                ReferencedContainer = "container:denLapBudgetApp.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7AF5DC49248ADA1B000DE624"
-            BuildableName = "denLapBudgetApp.app"
+            BuildableName = "Family Budget.app"
             BlueprintName = "denLapBudgetApp"
             ReferencedContainer = "container:denLapBudgetApp.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7AF5DC49248ADA1B000DE624"
-            BuildableName = "denLapBudgetApp.app"
+            BuildableName = "Family Budget.app"
             BlueprintName = "denLapBudgetApp"
             ReferencedContainer = "container:denLapBudgetApp.xcodeproj">
          </BuildableReference>

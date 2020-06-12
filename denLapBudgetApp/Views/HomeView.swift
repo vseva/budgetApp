@@ -9,11 +9,11 @@
 import SwiftUI
 
 struct HomeView: View {
-    @EnvironmentObject var budgetEntries: BudgetEntries
+    @EnvironmentObject var appState: AppState
 
     var body: some View {
         ZStack {
-            TabView(selection: $budgetEntries.selectedTab) {
+            TabView(selection: $appState.selectedTab) {
                 BudgetEntryForm()
                 .tabItem {
                     Image(systemName: "plus")
@@ -36,7 +36,7 @@ struct HomeView: View {
                     .tag(AppConstants.AppTabs.income)
             }
 
-            if !budgetEntries.itemsAreLoaded {
+            if !appState.itemsAreLoaded {
                 LoaderContainerView()
             }
         }
@@ -45,6 +45,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView().environmentObject(BudgetEntries())
+        HomeView().environmentObject(AppState())
     }
 }

@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct BudgetEntryForm: View {
-    @EnvironmentObject var budgetEntries: BudgetEntries
+    @EnvironmentObject var appState: AppState
     @State private var newEntry = BudgetEntryItem.blank
     
     var submitDisabled: Bool {
@@ -68,8 +68,8 @@ struct BudgetEntryForm: View {
                 
                 Section {
                     Button(action: {
-                        self.budgetEntries.add(item: self.newEntry)
-                        self.budgetEntries.selectedTab = AppConstants.AppTabs.expenses
+                        self.appState.add(item: self.newEntry)
+                        self.appState.selectedTab = AppConstants.AppTabs.expenses
                     }) {
                         Text("Save")
                     }.disabled(submitDisabled)
@@ -85,6 +85,6 @@ struct BudgetEntryForm: View {
 
 struct BudgetEntryForm_Previews: PreviewProvider {
     static var previews: some View {
-        BudgetEntryForm().environmentObject(BudgetEntries())
+        BudgetEntryForm().environmentObject(AppState())
     }
 }
