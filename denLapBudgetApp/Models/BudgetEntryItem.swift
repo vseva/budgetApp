@@ -23,6 +23,7 @@ struct BudgetEntryItem: Codable, Equatable, Hashable {
     var description: String
     var owner: String
     var type: String
+    var vendor: String
     
     static let blank = BudgetEntryItem(
         id: "",
@@ -31,7 +32,8 @@ struct BudgetEntryItem: Codable, Equatable, Hashable {
         date: Date(),
         description: "",
         owner: AppConstants.natashaEntryOwnerType,
-        type: AppConstants.expenseEntryType
+        type: AppConstants.expenseEntryType,
+        vendor: ""
     )
 
     #if DEBUG
@@ -42,7 +44,8 @@ struct BudgetEntryItem: Codable, Equatable, Hashable {
             date: getDateFromString(dateString: "2011-11-11T11:11Z"),
             description: "Макароны",
             owner: AppConstants.natashaEntryOwnerType,
-            type: AppConstants.expenseEntryType
+            type: AppConstants.expenseEntryType,
+            vendor: "Пятерочка"
         )
     #endif
 }
@@ -76,6 +79,10 @@ extension BudgetEntryItem {
         guard let type = json["type"] as? String else {
             throw SerializationError.missing("type")
         }
+        
+        guard let vendor = json["vendor"] as? String else {
+            throw SerializationError.missing("vendor")
+        }
 
         self.id = id
         self.amount = amount
@@ -84,5 +91,6 @@ extension BudgetEntryItem {
         self.description = description
         self.owner = owner
         self.type = type
+        self.vendor = vendor
     }
 }

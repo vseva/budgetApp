@@ -39,8 +39,8 @@ struct AppConstants {
         sevaEntryOwnerType,
     ]
     
-    static let apiUri = "http://localhost:3000/api"
-    //static let apiUri = "https://den-lap-budget-api.now.sh/api"
+    //static let apiUri = "http://localhost:3000/api"
+    static let apiUri = "https://den-lap-budget-api.now.sh/api"
     static let apiGetEntries = "\(apiUri)/entries"
     static let apiAddEntry = "\(apiUri)/add"
     static let apiRemoveEntry = "\(apiUri)/remove"

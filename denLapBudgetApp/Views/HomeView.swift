@@ -9,12 +9,11 @@
 import SwiftUI
 
 struct HomeView: View {
-    @EnvironmentObject var appState: AppState
     @EnvironmentObject var budgetEntries: BudgetEntries
 
     var body: some View {
         ZStack {
-            TabView(selection: $appState.selectedTab) {
+            TabView(selection: $budgetEntries.selectedTab) {
                 BudgetEntryForm()
                 .tabItem {
                     Image(systemName: "plus")
@@ -46,8 +45,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
-            .environmentObject(BudgetEntries())
-            .environmentObject(AppState())
+        HomeView().environmentObject(BudgetEntries())
     }
 }

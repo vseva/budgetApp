@@ -10,7 +10,6 @@ import SwiftUI
 
 struct BudgetEntryForm: View {
     @EnvironmentObject var budgetEntries: BudgetEntries
-    @EnvironmentObject var appState: AppState
     @State private var newEntry = BudgetEntryItem.blank
     
     var submitDisabled: Bool {
@@ -62,13 +61,15 @@ struct BudgetEntryForm: View {
                 
                 TextField("Description", text: $newEntry.description)
                 
+                TextField("Vendor", text: $newEntry.vendor)
+                
                 TextField("Amount, ₽", text: $newEntry.amount)
                     .keyboardType(.numberPad)
                 
                 Section {
                     Button(action: {
                         self.budgetEntries.add(item: self.newEntry)
-                        self.appState.selectedTab = AppConstants.AppTabs.expenses
+                        self.budgetEntries.selectedTab = AppConstants.AppTabs.expenses
                     }) {
                         Text("Save")
                     }.disabled(submitDisabled)
@@ -84,8 +85,6 @@ struct BudgetEntryForm: View {
 
 struct BudgetEntryForm_Previews: PreviewProvider {
     static var previews: some View {
-        BudgetEntryForm()
-            .environmentObject(BudgetEntries())
-            .environmentObject(AppState())
+        BudgetEntryForm().environmentObject(BudgetEntries())
     }
 }

@@ -159,6 +159,7 @@ func removeEntry(
 class BudgetEntries: ObservableObject {
     @Published var items = [BudgetEntryItem]()
     @Published var itemsAreLoaded = false
+    @Published var selectedTab = AppConstants.AppTabs.add
 
     init() {
         getEntries(completion: getEntriesCompletion)
