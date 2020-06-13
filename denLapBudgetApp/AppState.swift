@@ -12,7 +12,7 @@ import SwiftUI
 class AppState: ObservableObject {
     @Published var items = [BudgetEntryItem]()
     @Published var itemsAreLoaded = false
-    @Published var selectedTab = AppConstants.AppTabs.add
+    @Published var selectedTab = AppConstants.AppTabs.years
     @Published var itemIsSaving = false
 
     init() {
@@ -77,5 +77,9 @@ class AppState: ObservableObject {
     
     func getItemOffset(_ item: BudgetEntryItem) -> Int {
         return self.items.firstIndex(where: { $0.id == item.id })!
+    }
+    
+    func yearsList() -> [String] {
+        return DateUtils.getDistinctYears(self.items)
     }
 }

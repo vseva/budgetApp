@@ -26,7 +26,7 @@ struct BudgetEntriesListView: View {
     var body: some View {
         VStack {
             List {
-                ForEach(appState.getSectionItems(type: self.type), id: \.self) { item in
+                ForEach(appState.getSectionItems(type: self.type), id: \.id) { item in
                     NavigationLink(destination: BudgetEntryForm(entry: item, isEditing: true)) {
                         BudgetEntryItemView(item: item)
                     }

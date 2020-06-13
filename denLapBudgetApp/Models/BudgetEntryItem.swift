@@ -41,7 +41,7 @@ struct BudgetEntryItem: Codable, Equatable, Hashable {
             id: "",
             amount: "23",
             category: AppConstants.defaultBudgetExpenseCategory,
-            date: getDateFromString(dateString: "2011-11-11T11:11Z"),
+            date: getDateFromString("2011-11-11T11:11Z"),
             description: "Макароны",
             owner: AppConstants.natashaEntryOwnerType,
             type: AppConstants.expenseEntryType,
@@ -87,7 +87,7 @@ extension BudgetEntryItem {
         self.id = id
         self.amount = amount
         self.category = category
-        self.date = getDateFromString(dateString: date)
+        self.date = getDateFromString(date)
         self.description = description
         self.owner = owner
         self.type = type

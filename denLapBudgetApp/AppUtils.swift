@@ -19,17 +19,25 @@ func prepareRequest(location: String) -> URLRequest {
     return request
 }
 
-func getStringFromDate(date: Date) -> String {
+
+func getStringFromDate(_ date: Date) -> String {
     let formatter = ISO8601DateFormatter()
 
     return formatter.string(from: date)
 }
 
-// ISO 8601 date format: "2016-08-17T04:23:00Z"
-func getDateFromString(dateString: String) -> Date {
+func getDateFromString(_ dateString: String) -> Date {
     let formatter = ISO8601DateFormatter()
 
     return formatter.date(from: dateString)!
+}
+
+func getYearStringFromDate(_ date: Date) -> String {
+    let formatter = DateFormatter()
+
+    formatter.dateFormat = "yyyy"
+    
+    return formatter.string(from: date)
 }
 
 func getHumanDateFormat(date: Date) -> String {
@@ -38,4 +46,20 @@ func getHumanDateFormat(date: Date) -> String {
     formatter.dateFormat = "MMM d, yyyy"
     
     return formatter.string(from: date)
+}
+
+// ISO 8601: "2016-08-17T04:23:00Z"
+// "yyyy-MM-dd HH:mm:ss"
+class DateUtils {
+    static func getDistinctYears(_ entries: [BudgetEntryItem]) -> [String] {
+        var years: [String] = []
+        
+        entries.forEach { item in
+            years.append(getYearStringFromDate(item.date))
+        }
+        
+        return years.distinct.sorted {
+            $0 > $1
+        }
+    }
 }

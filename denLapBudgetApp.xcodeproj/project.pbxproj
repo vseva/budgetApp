@@ -11,6 +11,9 @@
 		7A2C0DC1248D3936004B3B00 /* LoaderContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2C0DC0248D3936004B3B00 /* LoaderContainerView.swift */; };
 		7A2C0DC4248D5A23004B3B00 /* AppUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2C0DC3248D5A23004B3B00 /* AppUtils.swift */; };
 		7A2C0DC7248E238A004B3B00 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2C0DC6248E238A004B3B00 /* Binding.swift */; };
+		7A8C0FD924950E3800380D41 /* TimePeriodYearsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C0FD824950E3800380D41 /* TimePeriodYearsView.swift */; };
+		7A8C0FDB24952FAF00380D41 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C0FDA24952FAF00380D41 /* Array.swift */; };
+		7A8C0FDD249531DF00380D41 /* TimePeriodMonthsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C0FDC249531DF00380D41 /* TimePeriodMonthsView.swift */; };
 		7ACE6119249480460004CC83 /* AppRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACE6118249480460004CC83 /* AppRequest.swift */; };
 		7AF5DC4E248ADA1B000DE624 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5DC4D248ADA1B000DE624 /* AppDelegate.swift */; };
 		7AF5DC50248ADA1B000DE624 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5DC4F248ADA1B000DE624 /* SceneDelegate.swift */; };
@@ -32,6 +35,9 @@
 		7A2C0DC0248D3936004B3B00 /* LoaderContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderContainerView.swift; sourceTree = "<group>"; };
 		7A2C0DC3248D5A23004B3B00 /* AppUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtils.swift; sourceTree = "<group>"; };
 		7A2C0DC6248E238A004B3B00 /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
+		7A8C0FD824950E3800380D41 /* TimePeriodYearsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriodYearsView.swift; sourceTree = "<group>"; };
+		7A8C0FDA24952FAF00380D41 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		7A8C0FDC249531DF00380D41 /* TimePeriodMonthsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriodMonthsView.swift; sourceTree = "<group>"; };
 		7ACE6118249480460004CC83 /* AppRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRequest.swift; sourceTree = "<group>"; };
 		7AF5DC4A248ADA1B000DE624 /* Family Budget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Family Budget.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AF5DC4D248ADA1B000DE624 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				7A2C0DC6248E238A004B3B00 /* Binding.swift */,
+				7A8C0FDA24952FAF00380D41 /* Array.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -123,6 +130,8 @@
 				7AF5DC62248ADA5E000DE624 /* HomeView.swift */,
 				7A2C0DC0248D3936004B3B00 /* LoaderContainerView.swift */,
 				7A2C0DBE248D3893004B3B00 /* LoaderView.swift */,
+				7A8C0FD824950E3800380D41 /* TimePeriodYearsView.swift */,
+				7A8C0FDC249531DF00380D41 /* TimePeriodMonthsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -209,8 +218,10 @@
 				7A2C0DC1248D3936004B3B00 /* LoaderContainerView.swift in Sources */,
 				7AF5DC6D248AE134000DE624 /* BudgetEntryForm.swift in Sources */,
 				7AF5DC69248ADBD1000DE624 /* AppState.swift in Sources */,
+				7A8C0FDB24952FAF00380D41 /* Array.swift in Sources */,
 				7AF5DC6B248ADC1B000DE624 /* BudgetEntriesListView.swift in Sources */,
 				7ACE6119249480460004CC83 /* AppRequest.swift in Sources */,
+				7A8C0FD924950E3800380D41 /* TimePeriodYearsView.swift in Sources */,
 				7A2C0DC7248E238A004B3B00 /* Binding.swift in Sources */,
 				7AF5DC77248B5843000DE624 /* AppConstants.swift in Sources */,
 				7A2C0DC4248D5A23004B3B00 /* AppUtils.swift in Sources */,
@@ -219,6 +230,7 @@
 				7AF5DC63248ADA5E000DE624 /* HomeView.swift in Sources */,
 				7AF5DC50248ADA1B000DE624 /* SceneDelegate.swift in Sources */,
 				7AF5DC75248B4B4F000DE624 /* BudgetEntryItemView.swift in Sources */,
+				7A8C0FDD249531DF00380D41 /* TimePeriodMonthsView.swift in Sources */,
 				7AF5DC52248ADA1B000DE624 /* ContentView.swift in Sources */,
 				7AF5DC66248ADAE2000DE624 /* BudgetEntryItem.swift in Sources */,
 			);

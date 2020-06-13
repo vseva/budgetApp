@@ -43,6 +43,17 @@ struct HomeView: View {
                     }
                     .tag(AppConstants.AppTabs.income)
                     .navigationViewStyle(StackNavigationViewStyle())
+                
+                NavigationView {
+                    TimePeriodYearsView()
+                }
+                .tabItem {
+                    Image(systemName: "calendar")
+                    Text("Years")
+                }
+                .tag(AppConstants.AppTabs.years)
+                .navigationViewStyle(StackNavigationViewStyle())
+
             }
 
             if !appState.itemsAreLoaded {

@@ -10,16 +10,17 @@ import Foundation
 
 
 struct AppConstants {
-    //static let apiUri = "http://localhost:3001/api"
-    static let apiUri = "https://den-lap-budget-api.now.sh/api"
+    static let apiUri = "http://localhost:3000/api"
+    //static let apiUri = "https://den-lap-budget-api.now.sh/api"
     static let apiGetEntries = "\(apiUri)/entries"
     static let apiAddEntry = "\(apiUri)/add"
     static let apiUpdateEntry = "\(apiUri)/update"
     static let apiRemoveEntry = "\(apiUri)/remove"
-    static let apiAuthCookie = "auth=zitugtK15KhCK2X0I7d436L3dsT6AIKI2we0UsIw"
+    static let apiAuthCookie = "auth=9L3ed5sAaMWvp2HAgNPSPcsHd3hDVc6AIKI2w" // private
+    //static let apiAuthCookie = "auth=zitugtK15KhCK2X0I7d436L3dsT6AIKI2we0UsIw" // common
 
     enum AppTabs {
-        case expenses, add, income
+        case expenses, add, income, years
     }
     static let expenseEntryType = "expense"
     static let incomeEntryType = "income"
