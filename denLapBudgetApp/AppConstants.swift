@@ -10,8 +10,8 @@ import Foundation
 
 
 struct AppConstants {
-    static let apiUri = "http://localhost:3001/api"
-    //static let apiUri = "https://den-lap-budget-api.now.sh/api"
+    //static let apiUri = "http://localhost:3001/api"
+    static let apiUri = "https://den-lap-budget-api.now.sh/api"
     static let apiGetEntries = "\(apiUri)/entries"
     static let apiAddEntry = "\(apiUri)/add"
     static let apiUpdateEntry = "\(apiUri)/update"
