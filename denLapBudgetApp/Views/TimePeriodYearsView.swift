@@ -15,7 +15,7 @@ struct TimePeriodYearsView: View {
         VStack {
             List {
                 ForEach(appState.yearsList(), id: \.self) { year in
-                    NavigationLink(destination: TimePeriodMonthsView(year: year)) {
+                    NavigationLink(destination: TimePeriodYearMonthsView(year: year)) {
                         Text(year)
                     }
                 }

@@ -82,4 +82,24 @@ class AppState: ObservableObject {
     func yearsList() -> [String] {
         return DateUtils.getDistinctYears(self.items)
     }
+    
+    func yearMonthsList(_ year: String) -> [String] {
+        let startOfYear = getDateFromString("\(year)-01-01T00:00:00Z")
+        let endOfYear = getDateFromString("\(year)-12-31T23:59:59Z")
+        let items = self.items.filter {
+            $0.date >= startOfYear && $0.date <= endOfYear
+        };
+        
+        return DateUtils.getDistinctYearMonths(items)
+    }
+    
+    func monthDaysList(_ year: String, _ month: String) -> [String] {
+        let startOfMonth = getDateFromString("\(year)-\(month)-01T00:00:00Z")
+        let endOfMonth = getDateFromString("\(year)-\(month)-31T23:59:59Z")
+        let items = self.items.filter {
+            $0.date >= startOfMonth && $0.date <= endOfMonth
+        };
+        
+        return DateUtils.getDistinctMonthDays(items)
+    }
 }

@@ -40,6 +40,22 @@ func getYearStringFromDate(_ date: Date) -> String {
     return formatter.string(from: date)
 }
 
+func getMonthStringFromDate(_ date: Date) -> String {
+    let formatter = DateFormatter()
+
+    formatter.dateFormat = "MM"
+    
+    return formatter.string(from: date)
+}
+
+func getDayStringFromDate(_ date: Date) -> String {
+    let formatter = DateFormatter()
+
+    formatter.dateFormat = "dd"
+    
+    return formatter.string(from: date)
+}
+
 func getHumanDateFormat(date: Date) -> String {
     let formatter = DateFormatter()
     
@@ -60,6 +76,30 @@ class DateUtils {
         
         return years.distinct.sorted {
             $0 > $1
+        }
+    }
+    
+    static func getDistinctYearMonths(_ entries: [BudgetEntryItem]) -> [String] {
+        var months: [String] = []
+        
+        entries.forEach { item in
+            months.append(getMonthStringFromDate(item.date))
+        }
+        
+        return months.distinct.sorted {
+            $0 < $1
+        }
+    }
+    
+    static func getDistinctMonthDays(_ entries: [BudgetEntryItem]) -> [String] {
+        var days: [String] = []
+        
+        entries.forEach { item in
+            days.append(getDayStringFromDate(item.date))
+        }
+        
+        return days.distinct.sorted {
+            $0 < $1
         }
     }
 }
