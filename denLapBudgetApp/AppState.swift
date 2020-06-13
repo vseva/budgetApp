@@ -9,160 +9,14 @@
 import SwiftUI
 
 
-func getEntries(completion: @escaping ([BudgetEntryItem]) -> Void) {
-    let request = prepareRequest(location: AppConstants.apiGetEntries)
-
-    URLSession.shared.dataTask(with: request) { data, response, error in
-        if error != nil {
-            print("Response error", error!)
-            return
-        }
-        
-        guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
-            if response != nil {
-                print("Wrong response", response!)
-            } else {
-                print("Empty response")
-            }
-            return
-        }
-        
-        guard let mime = response?.mimeType, mime == "application/json" else {
-            print("Wrong MIME type")
-            return
-        }
-        
-        do {
-            if let json = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
-                var budgetEntries: [BudgetEntryItem] = []
-
-                if let entries = json["results"] as? Array<[String: Any]> {
-                    try entries.forEach {
-                        let budgetEntry = try BudgetEntryItem(json: $0)
-                        budgetEntries.append(budgetEntry)
-                    }
-                    
-                }
-
-                completion(budgetEntries)
-            }
-        } catch let error as NSError {
-            print("JSON error: \(error.localizedDescription)")
-        }
-    }.resume()
-}
-
-func addEntry(budgetEntry: BudgetEntryItem, completion: @escaping (BudgetEntryItem) -> Void) {
-    var request = prepareRequest(location: AppConstants.apiAddEntry)
-    let jsonEncoder = JSONEncoder()
-
-    jsonEncoder.dateEncodingStrategy = .iso8601
-    
-    guard let jsonData = try? jsonEncoder.encode(budgetEntry) else {
-        print("Can not encode json")
-        return
-    }
-
-    let httpBody = jsonData
-
-    request.httpMethod = "POST"
-    request.httpBody = httpBody
-    
-    URLSession.shared.dataTask(with: request) { data, response, error in
-        if error != nil {
-            print("Response error", error!)
-            return
-        }
-        
-        guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
-            if response != nil {
-                print("Wrong response", response!)
-            } else {
-                print("Empty response")
-            }
-            return
-        }
-        
-        guard let mime = response?.mimeType, mime == "application/json" else {
-            print("Wrong MIME type")
-            return
-        }
-        
-        do {
-            if let json = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
-                if let newEntry = json["inserted"] as? [String: Any] {
-                    let newBudgetEntry = try BudgetEntryItem(json: newEntry)
-                    completion(newBudgetEntry)
-                }
-            }
-        } catch let error as NSError {
-            print("JSON error: \(error.localizedDescription)")
-        }
-    }.resume()
-}
-
-
-func removeEntry(
-    budgetEntry: BudgetEntryItem,
-    completion: @escaping () -> Void
-) {
-    var request = prepareRequest(location: AppConstants.apiRemoveEntry)
-    let jsonEncoder = JSONEncoder()
-
-    jsonEncoder.dateEncodingStrategy = .iso8601
-    
-    guard let jsonData = try? jsonEncoder.encode(budgetEntry) else {
-        print("Can not encode json")
-        return
-    }
-
-    let httpBody = jsonData
-
-    request.httpMethod = "DELETE"
-    request.httpBody = httpBody
-    
-    URLSession.shared.dataTask(with: request) { data, response, error in
-        if error != nil {
-            print("Response error", error!)
-            return
-        }
-        
-        guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
-            if response != nil {
-                print("Wrong response", response!)
-            } else {
-                print("Empty response")
-            }
-            return
-        }
-        
-        guard let mime = response?.mimeType, mime == "application/json" else {
-            print("Wrong MIME type")
-            return
-        }
-        
-        do {
-            if let json = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
-                if let deletedEntryId = json["deleted"] as? String {
-                    print("deletedEntryId", deletedEntryId)
-                    completion()
-                } else {
-                    print("Entry was not deleted", json)
-                }
-            }
-        } catch let error as NSError {
-            print("JSON error: \(error.localizedDescription)")
-        }
-    }.resume()
-}
-
 class AppState: ObservableObject {
     @Published var items = [BudgetEntryItem]()
     @Published var itemsAreLoaded = false
     @Published var selectedTab = AppConstants.AppTabs.add
+    @Published var itemIsSaving = false
 
     init() {
-        getEntries(completion: getEntriesCompletion)
+        AppRequest.getEntries(completion: getEntriesCompletion)
     }
     
     func getEntriesCompletion(_ fetchedItems: [BudgetEntryItem]) {
@@ -172,32 +26,56 @@ class AppState: ObservableObject {
         }
     }
     
+    func add(item: BudgetEntryItem) {
+        self.itemIsSaving = true
+        AppRequest.addEntry(budgetEntry: item, completion: addEntryCompletion)
+    }
+    
     func addEntryCompletion(_ newItem: BudgetEntryItem) {
         DispatchQueue.main.async {
             self.items.append(newItem)
+            self.itemIsSaving = false
+            
+            if (newItem.type == AppConstants.expenseEntryType) {
+                self.selectedTab = AppConstants.AppTabs.expenses
+            } else {
+                self.selectedTab = AppConstants.AppTabs.income
+            }
         }
     }
     
-    func add(item: BudgetEntryItem) {
-        addEntry(budgetEntry: item, completion: addEntryCompletion)
+    func update(item: BudgetEntryItem) {
+        self.itemIsSaving = true
+        AppRequest.updateEntry(budgetEntry: item, completion: updateEntryCompletion)
+    }
+    
+    func updateEntryCompletion(_ updatedItem: BudgetEntryItem) {
+        DispatchQueue.main.async {
+            self.itemIsSaving = false
+            self.items[self.getItemOffset(updatedItem)] = updatedItem
+        }
     }
  
-    func remove(item: BudgetEntryItem, atOffsets: IndexSet) {
+    func remove(_ item: BudgetEntryItem) {
+        let deletingItemOffset = self.getItemOffset(item)
+
         func removeEntryCompletion() {
             DispatchQueue.main.async {
-                self.items.remove(atOffsets: atOffsets)
+                self.items.remove(at: deletingItemOffset)
             }
         }
 
-        removeEntry(
+        AppRequest.removeEntry(
             budgetEntry: item,
             completion: removeEntryCompletion
         )
     }
     
     func getSectionItems(type: String) -> [BudgetEntryItem] {
-        return self.items.filter {
-            $0.type == type
-        }
+        return self.items.filter{ $0.type == type }
+    }
+    
+    func getItemOffset(_ item: BudgetEntryItem) -> Int {
+        return self.items.firstIndex(where: { $0.id == item.id })!
     }
 }

@@ -14,7 +14,19 @@ struct BudgetEntryForm: View {
     let isEditing: Bool
     
     var submitDisabled: Bool {
-        return entry.description == "" || entry.amount == ""
+        return entry.description == "" || entry.amount == "" || appState.itemIsSaving
+    }
+    
+    var buttonText: String {
+        if appState.itemIsSaving == true {
+            return "Saving..."
+        }
+
+        if isEditing {
+            return "Save"
+        }
+
+        return "Add"
     }
     
     func onEntryTypeChange(_ id: String) {
@@ -69,10 +81,13 @@ struct BudgetEntryForm: View {
                 
                 Section {
                     Button(action: {
-                        self.appState.add(item: self.entry)
-                        self.appState.selectedTab = AppConstants.AppTabs.expenses
+                        if self.isEditing {
+                            self.appState.update(item: self.entry)
+                        } else {
+                            self.appState.add(item: self.entry)
+                        }
                     }) {
-                        Text(isEditing ? "Save" : "Add")
+                        Text(buttonText)
                     }.disabled(submitDisabled)
                 }
             }

@@ -9,29 +9,24 @@
 import SwiftUI
 
 struct BudgetEntriesListView: View {
-    @EnvironmentObject var entries: AppState
+    @EnvironmentObject var appState: AppState
     @State var alertVisible = false
     @State var responseText = ""
     
-    var type: String
-    
-    var listTitle: String {
-        return AppConstants.budgetSectionTitles[type]!
-    }
+    let type: String
 
     func deleteItems(at offsets: IndexSet) {
+        let categoryItems = appState.getSectionItems(type: self.type)
+
         offsets.forEach {
-            entries.remove(
-                item: entries.items[$0],
-                atOffsets: offsets
-            )
+            appState.remove(categoryItems[$0])
         }
     }
 
     var body: some View {
         VStack {
             List {
-                ForEach(entries.getSectionItems(type: self.type), id: \.self) { item in
+                ForEach(appState.getSectionItems(type: self.type), id: \.self) { item in
                     NavigationLink(destination: BudgetEntryForm(entry: item, isEditing: true)) {
                         BudgetEntryItemView(item: item)
                     }
@@ -40,7 +35,7 @@ struct BudgetEntriesListView: View {
 
             Spacer()
         }
-        .navigationBarTitle(listTitle)
+        .navigationBarTitle(AppConstants.budgetSectionTitles[type]!)
     }
 }
 
