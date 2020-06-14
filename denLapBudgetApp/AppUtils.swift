@@ -13,7 +13,7 @@ func prepareRequest(location: String) -> URLRequest {
     let url = URL(string: location)!
     var request = URLRequest(url: url)
 
-    request.setValue(AppConstants.apiAuthCookie, forHTTPHeaderField: "Cookie")
+    request.setValue(AppSecret.apiAuthCookie, forHTTPHeaderField: "Cookie")
     request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
     
     return request
