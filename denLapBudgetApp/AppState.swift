@@ -98,7 +98,7 @@ class AppState: ObservableObject {
     func yearsList() -> [String] {
         let items = self.getSectionItems(type: self.getEntriesTypeByTab())
         
-        return DateUtils.getDistinctYears(items)
+        return DateUtils.getDistinctPeriods(items, "year")
     }
     
     func yearMonthsList(_ year: String) -> [String] {
@@ -109,7 +109,7 @@ class AppState: ObservableObject {
             $0.date >= startOfYear && $0.date <= endOfYear
         };
         
-        return DateUtils.getDistinctYearMonths(filteredItems)
+        return DateUtils.getDistinctPeriods(filteredItems, "month")
     }
     
     func monthDaysList(_ year: String, _ month: String) -> [String] {
@@ -120,7 +120,7 @@ class AppState: ObservableObject {
             $0.date >= startOfMonth && $0.date <= endOfMonth
         };
         
-        return DateUtils.getDistinctMonthDays(filteredItems)
+        return DateUtils.getDistinctPeriods(filteredItems, "day")
     }
     
     func dayItems(_ year: String, _ month: String, _ day: String) -> [BudgetEntryItem] {

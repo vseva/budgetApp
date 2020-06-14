@@ -43,38 +43,20 @@ func getFormattedDate(_ date: Date, _ format: String) -> String {
 // ISO 8601: "2016-08-17T04:23:00Z"
 // "yyyy-MM-dd HH:mm:ss"
 class DateUtils {
-    static func getDistinctYears(_ entries: [BudgetEntryItem]) -> [String] {
-        var years: [String] = []
+    static func getDistinctPeriods(_ entries: [BudgetEntryItem], _ period: String ) -> [String] {
+        let periodFormats = [
+            "year": "yyyy",
+            "month": "MM",
+            "day": "dd",
+        ];
+        
+        var periodsList: [String] = []
         
         entries.forEach { item in
-            years.append(getFormattedDate(item.date, "yyyy"))
+            periodsList.append(getFormattedDate(item.date, periodFormats[period]!))
         }
         
-        return years.distinct.sorted {
-            $0 > $1
-        }
-    }
-    
-    static func getDistinctYearMonths(_ entries: [BudgetEntryItem]) -> [String] {
-        var months: [String] = []
-        
-        entries.forEach { item in
-            months.append(getFormattedDate(item.date, "MM"))
-        }
-        
-        return months.distinct.sorted {
-            $0 > $1
-        }
-    }
-    
-    static func getDistinctMonthDays(_ entries: [BudgetEntryItem]) -> [String] {
-        var days: [String] = []
-        
-        entries.forEach { item in
-            days.append(getFormattedDate(item.date, "dd"))
-        }
-        
-        return days.distinct.sorted {
+        return periodsList.distinct.sorted {
             $0 > $1
         }
     }
