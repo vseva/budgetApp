@@ -19,7 +19,6 @@ func prepareRequest(location: String) -> URLRequest {
     return request
 }
 
-
 func getStringFromDate(_ date: Date) -> String {
     let formatter = ISO8601DateFormatter()
 

@@ -20,7 +20,11 @@ struct TimePeriodMonthDaysView: View {
                     NavigationLink(
                         destination: TimePeriodDayView(year: self.year, month: self.month, day: day)
                     ) {
-                        Text(String(Int(day)!))
+                        HStack {
+                            Text(String(Int(day)!))
+                            Spacer()
+                            Text(self.appState.totalInDay(self.year, self.month, day))
+                        }
                     }
                 }
             }

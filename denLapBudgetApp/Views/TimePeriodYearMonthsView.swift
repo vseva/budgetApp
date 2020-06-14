@@ -17,7 +17,11 @@ struct TimePeriodYearMonthsView: View {
             List {
                 ForEach(appState.yearMonthsList(year), id: \.self) { month in
                     NavigationLink(destination: TimePeriodMonthDaysView(year: self.year, month: month)) {
-                        Text(AppConstants.humanMonth[month]!)
+                        HStack {
+                            Text(AppConstants.humanMonth[month]!)
+                            Spacer()
+                            Text(self.appState.totalInMonth(self.year, month))
+                        }
                     }
                 }
             }

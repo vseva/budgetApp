@@ -101,27 +101,56 @@ class AppState: ObservableObject {
         return DateUtils.getDistinctPeriods(items, "year")
     }
     
-    func yearMonthsList(_ year: String) -> [String] {
+    func getStartOfYear(_ year: String) -> Date {
+        return getDateFromString("\(year)-01-01T00:00:00Z")
+    }
+    
+    func getEndOfYear(_ year: String) -> Date {
+        return getDateFromString("\(year)-12-31T23:59:59Z")
+    }
+    
+    func getStartOfMonth(_ year: String, _ month: String) -> Date {
+        return getDateFromString("\(year)-\(month)-01T00:00:00Z")
+    }
+    
+    func getEndOfMonth(_ year: String, _ month: String) -> Date {
+        return getDateFromString("\(year)-\(month)-31T23:59:59Z")
+    }
+    
+    func getYearItems(_ year: String) -> [BudgetEntryItem] {
         let items = self.getSectionItems(type: self.getEntriesTypeByTab())
-        let startOfYear = getDateFromString("\(year)-01-01T00:00:00Z")
-        let endOfYear = getDateFromString("\(year)-12-31T23:59:59Z")
+        let start = getStartOfYear(year)
+        let end = getEndOfYear(year)
         let filteredItems = items.filter {
-            $0.date >= startOfYear && $0.date <= endOfYear
+            $0.date >= start && $0.date <= end
         };
+        
+        return filteredItems
+    }
+    
+    func yearMonthsList(_ year: String) -> [String] {
+        let filteredItems = getYearItems(year)
         
         return DateUtils.getDistinctPeriods(filteredItems, "month")
     }
     
-    func monthDaysList(_ year: String, _ month: String) -> [String] {
+    func getMonthItems(_ year: String, _ month: String) -> [BudgetEntryItem] {
         let items = self.getSectionItems(type: self.getEntriesTypeByTab())
-        let startOfMonth = getDateFromString("\(year)-\(month)-01T00:00:00Z")
-        let endOfMonth = getDateFromString("\(year)-\(month)-31T23:59:59Z")
+        let start = getStartOfMonth(year, month)
+        let end = getEndOfMonth(year, month)
         let filteredItems = items.filter {
-            $0.date >= startOfMonth && $0.date <= endOfMonth
+            $0.date >= start && $0.date <= end
         };
+        
+        return filteredItems
+    }
+    
+    func monthDaysList(_ year: String, _ month: String) -> [String] {
+        let filteredItems = getMonthItems(year, month);
         
         return DateUtils.getDistinctPeriods(filteredItems, "day")
     }
+    
     
     func dayItems(_ year: String, _ month: String, _ day: String) -> [BudgetEntryItem] {
         let items = self.getSectionItems(type: self.getEntriesTypeByTab())
@@ -134,5 +163,32 @@ class AppState: ObservableObject {
         return filteredItems.sorted {
             $0.date > $1.date
         }
+    }
+    
+    func totalInYear(_ year: String) -> String {
+        let filteredItems = getYearItems(year)
+        let total = filteredItems.reduce(0, { acc, cur in
+            acc + Int(cur.amount)!
+        })
+        
+        return "\(String(total)) ₽"
+    }
+    
+    func totalInMonth(_ year: String, _ month: String) -> String {
+        let filteredItems = getMonthItems(year, month)
+        let total = filteredItems.reduce(0, { acc, cur in
+            acc + Int(cur.amount)!
+        })
+        
+        return "\(String(total)) ₽"
+    }
+    
+    func totalInDay(_ year: String, _ month: String, _ day: String) -> String {
+        let filteredItems = dayItems(year, month, day)
+        let total = filteredItems.reduce(0, { acc, cur in
+            acc + Int(cur.amount)!
+        })
+        
+        return "\(String(total)) ₽"
     }
 }
