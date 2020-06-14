@@ -48,6 +48,7 @@
 		7A8C0FE22495FC5B00380D41 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		7A8C0FE42495FC7700380D41 /* Numeric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Numeric.swift; sourceTree = "<group>"; };
 		7A8C0FE62495FF6600380D41 /* AppSecret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSecret.swift; sourceTree = "<group>"; };
+		7A8C0FE82496055300380D41 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		7ACE6118249480460004CC83 /* AppRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRequest.swift; sourceTree = "<group>"; };
 		7AF5DC4A248ADA1B000DE624 /* Family Budget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Family Budget.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AF5DC4D248ADA1B000DE624 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +92,7 @@
 		7AF5DC41248ADA1B000DE624 = {
 			isa = PBXGroup;
 			children = (
+				7A8C0FE82496055300380D41 /* README.md */,
 				7AF5DC4C248ADA1B000DE624 /* denLapBudgetApp */,
 				7AF5DC4B248ADA1B000DE624 /* Products */,
 			);
