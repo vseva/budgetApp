@@ -32,34 +32,10 @@ func getDateFromString(_ dateString: String) -> Date {
     return formatter.date(from: dateString)!
 }
 
-func getYearStringFromDate(_ date: Date) -> String {
-    let formatter = DateFormatter()
-
-    formatter.dateFormat = "yyyy"
-    
-    return formatter.string(from: date)
-}
-
-func getMonthStringFromDate(_ date: Date) -> String {
-    let formatter = DateFormatter()
-
-    formatter.dateFormat = "MM"
-    
-    return formatter.string(from: date)
-}
-
-func getDayStringFromDate(_ date: Date) -> String {
-    let formatter = DateFormatter()
-
-    formatter.dateFormat = "dd"
-    
-    return formatter.string(from: date)
-}
-
-func getHumanDateFormat(date: Date) -> String {
+func getFormattedDate(_ date: Date, _ format: String) -> String {
     let formatter = DateFormatter()
     
-    formatter.dateFormat = "MMM d, yyyy"
+    formatter.dateFormat = format
     
     return formatter.string(from: date)
 }
@@ -71,7 +47,7 @@ class DateUtils {
         var years: [String] = []
         
         entries.forEach { item in
-            years.append(getYearStringFromDate(item.date))
+            years.append(getFormattedDate(item.date, "yyyy"))
         }
         
         return years.distinct.sorted {
@@ -83,11 +59,11 @@ class DateUtils {
         var months: [String] = []
         
         entries.forEach { item in
-            months.append(getMonthStringFromDate(item.date))
+            months.append(getFormattedDate(item.date, "MM"))
         }
         
         return months.distinct.sorted {
-            $0 < $1
+            $0 > $1
         }
     }
     
@@ -95,11 +71,11 @@ class DateUtils {
         var days: [String] = []
         
         entries.forEach { item in
-            days.append(getDayStringFromDate(item.date))
+            days.append(getFormattedDate(item.date, "dd"))
         }
         
         return days.distinct.sorted {
-            $0 < $1
+            $0 > $1
         }
     }
 }

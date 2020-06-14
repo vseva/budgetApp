@@ -21,7 +21,7 @@ struct TimePeriodYearsView: View {
                 }
             }
         }
-        .navigationBarTitle("Years")
+        .navigationBarTitle(appState.getSectionTitleByTab())
     }
 }
 

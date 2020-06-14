@@ -25,7 +25,7 @@ struct HomeView: View {
                     .navigationViewStyle(StackNavigationViewStyle())
                 
                 NavigationView {
-                        BudgetEntriesListView(type: AppConstants.expenseEntryType)
+                        TimePeriodYearsView()
                     }
                     .tabItem {
                         Image(systemName: "tray.and.arrow.up")
@@ -35,7 +35,7 @@ struct HomeView: View {
                     .navigationViewStyle(StackNavigationViewStyle())
 
                 NavigationView {
-                        BudgetEntriesListView(type: AppConstants.incomeEntryType)
+                        TimePeriodYearsView()
                     }
                     .tabItem {
                         Image(systemName: "tray.and.arrow.down")
@@ -44,15 +44,25 @@ struct HomeView: View {
                     .tag(AppConstants.AppTabs.income)
                     .navigationViewStyle(StackNavigationViewStyle())
                 
-                NavigationView {
-                    TimePeriodYearsView()
-                }
-                .tabItem {
-                    Image(systemName: "calendar")
-                    Text("Years")
-                }
-                .tag(AppConstants.AppTabs.years)
-                .navigationViewStyle(StackNavigationViewStyle())
+//                NavigationView {
+//                        BudgetEntriesListView(type: AppConstants.expenseEntryType)
+//                    }
+//                    .tabItem {
+//                        Image(systemName: "tray.and.arrow.up")
+//                        Text(AppConstants.budgetSectionTitles[AppConstants.expenseEntryType]!)
+//                    }
+//                    .tag(AppConstants.AppTabs.expensesAll)
+//                    .navigationViewStyle(StackNavigationViewStyle())
+//
+//                NavigationView {
+//                        BudgetEntriesListView(type: AppConstants.incomeEntryType)
+//                    }
+//                    .tabItem {
+//                        Image(systemName: "tray.and.arrow.down")
+//                        Text(AppConstants.budgetSectionTitles[AppConstants.incomeEntryType]!)
+//                    }
+//                    .tag(AppConstants.AppTabs.incomeAll)
+//                    .navigationViewStyle(StackNavigationViewStyle())
 
             }
 

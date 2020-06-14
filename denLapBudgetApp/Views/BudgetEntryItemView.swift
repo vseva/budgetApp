@@ -10,6 +10,7 @@ import SwiftUI
 
 struct BudgetEntryItemView: View {
     var item: BudgetEntryItem
+    var hideDate: Bool
     var categoryTitle: String {
         if item.type == AppConstants.expenseEntryType {
             return AppConstants.budgetExpensesCategoriesTypes[item.category]!
@@ -20,8 +21,10 @@ struct BudgetEntryItemView: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            Text(getHumanDateFormat(date: item.date))
-                .font(.system(size: 12))
+            if !hideDate {
+                Text(getFormattedDate(item.date, AppConstants.humanDateFormat))
+                    .font(.system(size: 12))
+            }
             Text(categoryTitle)
                 .font(.system(size: 14))
             HStack {
@@ -35,6 +38,6 @@ struct BudgetEntryItemView: View {
 
 struct BudgetEntryItemView_Previews: PreviewProvider {
     static var previews: some View {
-        BudgetEntryItemView(item: BudgetEntryItem.example)
+        BudgetEntryItemView(item: BudgetEntryItem.example, hideDate: false)
     }
 }

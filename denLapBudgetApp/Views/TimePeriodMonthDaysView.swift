@@ -17,10 +17,14 @@ struct TimePeriodMonthDaysView: View {
         VStack {
             List {
                 ForEach(appState.monthDaysList(year, month), id: \.self) { day in
-                    Text(day)
+                    NavigationLink(
+                        destination: TimePeriodDayView(year: self.year, month: self.month, day: day)
+                    ) {
+                        Text(String(Int(day)!))
+                    }
                 }
             }
-        }.navigationBarTitle("\(AppConstants.humanMonth[month]!) \(year)")
+        }.navigationBarTitle(AppConstants.humanMonth[month]!)
     }
 }
 

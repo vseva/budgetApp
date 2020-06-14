@@ -9,13 +9,35 @@
 import SwiftUI
 
 struct TimePeriodDayView: View {
+    @EnvironmentObject var appState: AppState
+    let year: String
+    let month: String
+    let day: String
+    
+    func deleteItems(at offsets: IndexSet) {
+        let dayItems = appState.dayItems(self.year, self.month, self.day)
+
+        offsets.forEach {
+            appState.remove(dayItems[$0])
+        }
+    }
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            List {
+                ForEach(appState.dayItems(year, month, day), id: \._id) { item in
+                    NavigationLink(destination: BudgetEntryForm(entry: item, isEditing: true)) {
+                        BudgetEntryItemView(item: item, hideDate: true)
+                    }
+                }.onDelete(perform: deleteItems)
+            }
+        }.navigationBarTitle("\(AppConstants.humanMonth[month]!) \(String(Int(day)!)), \(year)")
     }
 }
 
 struct TimePeriodDayView_Previews: PreviewProvider {
     static var previews: some View {
-        TimePeriodDayView()
+        TimePeriodDayView(year: "2020", month: "01", day: "01")
+            .environmentObject(AppState())
     }
 }

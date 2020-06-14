@@ -16,7 +16,7 @@ enum SerializationError: Error {
 }
 
 struct BudgetEntryItem: Codable, Equatable, Hashable {
-    var id: String
+    var _id: String
     var amount: String
     var category: String
     var date: Date
@@ -26,7 +26,7 @@ struct BudgetEntryItem: Codable, Equatable, Hashable {
     var vendor: String
     
     static let blank = BudgetEntryItem(
-        id: "",
+        _id: "",
         amount: "",
         category: AppConstants.defaultBudgetExpenseCategory,
         date: Date(),
@@ -38,7 +38,7 @@ struct BudgetEntryItem: Codable, Equatable, Hashable {
 
     #if DEBUG
         static let example = BudgetEntryItem(
-            id: "",
+            _id: "",
             amount: "23",
             category: AppConstants.defaultBudgetExpenseCategory,
             date: getDateFromString("2011-11-11T11:11Z"),
@@ -52,8 +52,8 @@ struct BudgetEntryItem: Codable, Equatable, Hashable {
 
 extension BudgetEntryItem {
     init(json: [String: Any]) throws {
-        guard let id = json["id"] as? String else {
-            throw SerializationError.missing("id")
+        guard let _id = json["_id"] as? String else {
+            throw SerializationError.missing("_id")
         }
         
         guard let amount = json["amount"] as? String else {
@@ -84,7 +84,7 @@ extension BudgetEntryItem {
             throw SerializationError.missing("vendor")
         }
 
-        self.id = id
+        self._id = _id
         self.amount = amount
         self.category = category
         self.date = getDateFromString(date)
