@@ -20,7 +20,7 @@ struct TimePeriodYearMonthsView: View {
                         HStack {
                             Text(AppConstants.humanMonth[month]!)
                             Spacer()
-                            Text(self.appState.totalInMonth(self.year, month))
+                            Text(self.appState.totalInPeriod(year: self.year, month: month))
                         }
                     }
                 }

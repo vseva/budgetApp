@@ -30,7 +30,7 @@ struct BudgetEntryItemView: View {
             HStack {
                 Text(item.description).font(.headline)
                 Spacer()
-                Text("\(item.amount) ₽").font(.headline)
+                Text("\(Int(item.amount)!.formattedWithSeparator) ₽").font(.headline)
             }
         }
     }

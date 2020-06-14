@@ -165,30 +165,23 @@ class AppState: ObservableObject {
         }
     }
     
-    func totalInYear(_ year: String) -> String {
-        let filteredItems = getYearItems(year)
+    func totalInPeriod(year: String, month: String? = "", day: String? = "") -> String {
+        var filteredItems: [BudgetEntryItem] = []
+        
+        if month != "" {
+            if day != "" {
+                filteredItems = dayItems(year, month!, day!)
+            } else {
+                filteredItems = getMonthItems(year, month!)
+            }
+        } else {
+            filteredItems = getYearItems(year)
+        }
+        
         let total = filteredItems.reduce(0, { acc, cur in
             acc + Int(cur.amount)!
         })
         
-        return "\(String(total)) ₽"
-    }
-    
-    func totalInMonth(_ year: String, _ month: String) -> String {
-        let filteredItems = getMonthItems(year, month)
-        let total = filteredItems.reduce(0, { acc, cur in
-            acc + Int(cur.amount)!
-        })
-        
-        return "\(String(total)) ₽"
-    }
-    
-    func totalInDay(_ year: String, _ month: String, _ day: String) -> String {
-        let filteredItems = dayItems(year, month, day)
-        let total = filteredItems.reduce(0, { acc, cur in
-            acc + Int(cur.amount)!
-        })
-        
-        return "\(String(total)) ₽"
+        return "\(total.formattedWithSeparator) ₽"
     }
 }

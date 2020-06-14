@@ -23,7 +23,7 @@ struct TimePeriodMonthDaysView: View {
                         HStack {
                             Text(String(Int(day)!))
                             Spacer()
-                            Text(self.appState.totalInDay(self.year, self.month, day))
+                            Text(self.appState.totalInPeriod(year: self.year, month: self.month, day: day))
                         }
                     }
                 }
