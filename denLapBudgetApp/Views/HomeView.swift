@@ -66,9 +66,9 @@ struct HomeView: View {
 
             }
 
-            if !appState.itemsAreLoaded {
-                LoaderContainerView()
-            }
+//            if !appState.itemsAreLoaded {
+//                LoaderContainerView()
+//            }
         }
     }
 }
