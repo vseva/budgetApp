@@ -71,13 +71,10 @@ struct BudgetEntryForm: View {
                         }
                     }
                 }
-                
-                TextField("Description", text: $entry.description)
-                
-                TextField("Vendor", text: $entry.vendor)
-                
-                TextField("Amount, ₽", text: $entry.amount)
-                    .keyboardType(.numberPad)
+
+                CustomTextfield(text: $entry.description, keyType: UIKeyboardType.default, placeHolder: "Description")
+                CustomTextfield(text: $entry.vendor, keyType: UIKeyboardType.default, placeHolder: "Vendor")
+                CustomTextfield(text: $entry.amount, keyType: UIKeyboardType.numberPad, placeHolder: "Amount, ₽")
                 
                 Section {
                     Button(action: {

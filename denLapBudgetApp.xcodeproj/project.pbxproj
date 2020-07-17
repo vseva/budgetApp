@@ -11,6 +11,7 @@
 		7A2C0DC1248D3936004B3B00 /* LoaderContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2C0DC0248D3936004B3B00 /* LoaderContainerView.swift */; };
 		7A2C0DC4248D5A23004B3B00 /* AppUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2C0DC3248D5A23004B3B00 /* AppUtils.swift */; };
 		7A2C0DC7248E238A004B3B00 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2C0DC6248E238A004B3B00 /* Binding.swift */; };
+		7A4CD5C524C22460002B49E2 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4CD5C424C22460002B49E2 /* UITextField.swift */; };
 		7A8C0FD924950E3800380D41 /* TimePeriodYearsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C0FD824950E3800380D41 /* TimePeriodYearsView.swift */; };
 		7A8C0FDB24952FAF00380D41 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C0FDA24952FAF00380D41 /* Array.swift */; };
 		7A8C0FDD249531DF00380D41 /* TimePeriodYearMonthsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C0FDC249531DF00380D41 /* TimePeriodYearMonthsView.swift */; };
@@ -41,6 +42,7 @@
 		7A2C0DC0248D3936004B3B00 /* LoaderContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderContainerView.swift; sourceTree = "<group>"; };
 		7A2C0DC3248D5A23004B3B00 /* AppUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtils.swift; sourceTree = "<group>"; };
 		7A2C0DC6248E238A004B3B00 /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
+		7A4CD5C424C22460002B49E2 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		7A8C0FD824950E3800380D41 /* TimePeriodYearsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriodYearsView.swift; sourceTree = "<group>"; };
 		7A8C0FDA24952FAF00380D41 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		7A8C0FDC249531DF00380D41 /* TimePeriodYearMonthsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriodYearMonthsView.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				7A8C0FDA24952FAF00380D41 /* Array.swift */,
 				7A8C0FE22495FC5B00380D41 /* Formatter.swift */,
 				7A8C0FE42495FC7700380D41 /* Numeric.swift */,
+				7A4CD5C424C22460002B49E2 /* UITextField.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				7ACE6119249480460004CC83 /* AppRequest.swift in Sources */,
 				7A8C0FDF2495450500380D41 /* TimePeriodMonthDaysView.swift in Sources */,
 				7A8C0FD924950E3800380D41 /* TimePeriodYearsView.swift in Sources */,
+				7A4CD5C524C22460002B49E2 /* UITextField.swift in Sources */,
 				7A2C0DC7248E238A004B3B00 /* Binding.swift in Sources */,
 				7AF5DC77248B5843000DE624 /* AppConstants.swift in Sources */,
 				7A2C0DC4248D5A23004B3B00 /* AppUtils.swift in Sources */,

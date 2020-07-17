@@ -9,7 +9,7 @@
 import SwiftUI
 
 
-private let kPreviewBackground = Color(red: 237/255.0, green: 85/255.0, blue: 101/255.0)
+private let kPreviewBackground = Color(red: 235/255.0, green: 70/255.0, blue: 180/255.0)
 
 struct LoaderContainerView: View {
     var body: some View {

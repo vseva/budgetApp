@@ -12,7 +12,7 @@ import SwiftUI
 class AppState: ObservableObject {
     @Published var items = [BudgetEntryItem]()
     @Published var itemsAreLoaded = false
-    @Published var selectedTab = AppConstants.AppTabs.add
+    @Published var selectedTab = AppConstants.AppTabs.expenses
     @Published var itemIsSaving = false
 
     init() {

@@ -14,15 +14,15 @@ struct HomeView: View {
     var body: some View {
         ZStack {
             TabView(selection: $appState.selectedTab) {
-                NavigationView {
-                        BudgetEntryForm(entry: BudgetEntryItem.blank, isEditing: false)
-                    }
-                    .tabItem {
-                        Image(systemName: "plus")
-                        Text("Add")
-                    }
-                    .tag(AppConstants.AppTabs.add)
-                    .navigationViewStyle(StackNavigationViewStyle())
+//                NavigationView {
+//                        BudgetEntryForm(entry: BudgetEntryItem.blank, isEditing: false)
+//                    }
+//                    .tabItem {
+//                        Image(systemName: "plus")
+//                        Text("Add")
+//                    }
+//                    .tag(AppConstants.AppTabs.add)
+//                    .navigationViewStyle(StackNavigationViewStyle())
                 
                 NavigationView {
                         TimePeriodYearsView()
@@ -66,9 +66,9 @@ struct HomeView: View {
 
             }
 
-//            if !appState.itemsAreLoaded {
-//                LoaderContainerView()
-//            }
+            if !appState.itemsAreLoaded {
+                LoaderContainerView()
+            }
         }
     }
 }
