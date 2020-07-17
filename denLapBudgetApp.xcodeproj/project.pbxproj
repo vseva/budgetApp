@@ -36,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7A102EDD24C17A7E00A98D04 /* Family Budget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Family Budget.entitlements"; sourceTree = "<group>"; };
 		7A2C0DBE248D3893004B3B00 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		7A2C0DC0248D3936004B3B00 /* LoaderContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderContainerView.swift; sourceTree = "<group>"; };
 		7A2C0DC3248D5A23004B3B00 /* AppUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtils.swift; sourceTree = "<group>"; };
@@ -109,6 +110,7 @@
 		7AF5DC4C248ADA1B000DE624 /* denLapBudgetApp */ = {
 			isa = PBXGroup;
 			children = (
+				7A102EDD24C17A7E00A98D04 /* Family Budget.entitlements */,
 				7AF5DC76248B5843000DE624 /* AppConstants.swift */,
 				7AF5DC4D248ADA1B000DE624 /* AppDelegate.swift */,
 				7ACE6118249480460004CC83 /* AppRequest.swift */,
@@ -390,6 +392,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "denLapBudgetApp/Family Budget.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"denLapBudgetApp/Preview Content\"";
 				DEVELOPMENT_TEAM = B53U997GAC;
@@ -410,6 +413,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "denLapBudgetApp/Family Budget.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"denLapBudgetApp/Preview Content\"";
 				DEVELOPMENT_TEAM = B53U997GAC;

@@ -16,7 +16,7 @@ class AppState: ObservableObject {
     @Published var itemIsSaving = false
 
     init() {
-        AppRequest.getEntries(completion: getEntriesCompletion)
+        //AppRequest.getEntries(completion: getEntriesCompletion)
     }
     
     func getEntriesCompletion(_ fetchedItems: [BudgetEntryItem]) {
