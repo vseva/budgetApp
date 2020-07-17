@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ) {
         let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
         let token = tokenParts.joined()
-        print("Device Token: \(token)")
+        print("Device token: \(token)")
     }
 
     func application(
@@ -60,7 +60,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UNUserNotificationCenter.current()
             .requestAuthorization(options: [.alert, .sound, .badge]) {
                 [weak self] granted, error in
-                    print("Permission granted: \(granted)")
                     guard granted else { return }
                     self?.getNotificationSettings()
             }
@@ -71,11 +70,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .getNotificationSettings { settings in
                 print("Notification settings: \(settings)")
                 guard settings.authorizationStatus == .authorized else {
-                    print("Wrong auth status!")
                     return
                 }
                 DispatchQueue.main.async {
-                    print("main queue dispatch called!")
                     UIApplication.shared.registerForRemoteNotifications()
                 }
             }
